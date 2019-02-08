@@ -11,25 +11,1268 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{141C0963-911E-48D0-AC9A-2B6080FCDADD}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{FBF3D6FE-4863-46E8-B721-C7C068148F04}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Extract FClub Data"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{96A8C923-60A1-4B2B-B815-64C15DE46FFA}"
       DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:LocaleID="1033"
+      DTS:ObjectName="Extract FClub Data"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract FClub Data\Extract FClub_Member Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract FClub_Member Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Member</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM Member
+
+SELECT * FROM Product
+UNION ALL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Extract FClub_Member Data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[active]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[balance]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[balance]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[balance]"
+                      name="balance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      dataType="i2"
+                      name="active" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      dataType="nText"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].ExternalColumns[balance]"
+                      dataType="i4"
+                      name="balance" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[active]"
+                      dataType="i2"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[active]"
+                      name="active" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[year]"
+                      dataType="nText"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[balance]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[balance]"
+                      name="balance" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Extract FClub_Product Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract FClub_Product Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Product</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM Product
+UNION ALL
+SELECT * FROM Room
+UNION ALL
+SELECT * FROM Sale
+UNION ALL
+SELECT * FROM SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Extract FClub_Product Data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[active]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[price]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[price]"
+                      name="price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[deactivate_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].Columns[deactivate_date]"
+                      name="deactivate_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      dataType="i2"
+                      name="active" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="nText"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="i4"
+                      name="price" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Output].ExternalColumns[deactivate_date]"
+                      dataType="date"
+                      name="deactivate_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="nText"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[active]"
+                      dataType="i2"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[active]"
+                      name="active" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[deactivate_date]"
+                      dataType="date"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[deactivate_date]"
+                      name="deactivate_date" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Product Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Extract FClub_Room Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract FClub_Room Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Room</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM Product
+UNION ALL
+SELECT * FROM Room
+UNION ALL
+SELECT * FROM Sale
+UNION ALL
+SELECT * FROM SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Extract FClub_Room Data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      length="255"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="255"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[name]"
+                      name="name" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Room Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Extract FClub_Sale Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract FClub_Sale Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sale</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM Product
+UNION ALL
+SELECT * FROM Room
+UNION ALL
+SELECT * FROM Sale
+UNION ALL
+SELECT * FROM SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Extract FClub_Sale Data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      name="member_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[room_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[room_id]"
+                      name="room_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[timestamp]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[timestamp]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[timestamp]"
+                      name="timestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[price]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[price]"
+                      name="price"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      dataType="i4"
+                      name="member_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[room_id]"
+                      dataType="i4"
+                      name="room_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[timestamp]"
+                      dataType="date"
+                      name="timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="i4"
+                      name="price" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      name="member_id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[room_id]"
+                      name="room_id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[timestamp]"
+                      dataType="date"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[timestamp]"
+                      name="timestamp" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      name="price" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract FClub_SemesterGroups Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT * FROM Product
+UNION ALL
+SELECT * FROM Room
+UNION ALL
+SELECT * FROM Sale
+UNION ALL
+SELECT * FROM SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      name="member_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[periode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[periode]"
+                      length="50"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[periode]"
+                      name="periode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[semester]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[semester]"
+                      length="50"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].Columns[semester]"
+                      name="semester"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      dataType="i4"
+                      name="member_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[periode]"
+                      dataType="wstr"
+                      length="50"
+                      name="periode" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Output].ExternalColumns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      name="semester" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      name="member_id" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[periode]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[periode]"
+                      name="periode" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[semester]"
+                      name="semester" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Extract FClub_SemesterGroups Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Lookup Member Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Member Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [Lookup Member Key]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [Lookup Member Key]) [refTable]
+where [refTable].[id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="active" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="yearstarted" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Extract FClub Data\38:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Lookup Member Key.Connections[OleDbConnection]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output].Columns[id]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">id</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">id</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Lookup Year Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Year Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullDateUK" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FullDateUSA" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfMonth" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DaySuffix" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayName" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfWeekUSA" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfWeekUK" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfWeekInMonth" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfWeekInYear" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfQuarter" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayOfYear" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekOfMonth" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekOfQuarter" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="WeekOfYear" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Month" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthName" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthOfQuarter" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="QuarterName" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Year" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="YearName" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MonthYear" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MMYYYY" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstDayOfMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDayOfMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDayOfQuarter" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDayOfQuarter" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstDayOfYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastDayOfYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsHolidayUSA" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsWeekday" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HolidayUSA" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IsHolidayUK" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HolidayUK" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalDayOfYear" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalWeekOfYear" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalMonth" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalQuarter" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalQuarterName" dataType="DT_STR" length="9" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalYear" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalYearName" dataType="DT_STR" length="7" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalMonthYear" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalMMYYYY" dataType="DT_STR" length="6" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FiscalFirstDayOfMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalLastDayOfMonth" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalFirstDayOfQuarter" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalLastDayOfQuarter" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalFirstDayOfYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalLastDayOfYear" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Lookup Year Key.Connections[OleDbConnection]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Lookup Year Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Year Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Year Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup Year Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\OLE DB Destination.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract FClub Data.Paths[Lookup Match Output]"
+              endId="Package\Extract FClub Data\Lookup Year Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Extract FClub Data.Paths[Lookup Match Output1]"
+              endId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Extract FClub Data\Lookup Year Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Extract FClub Data.Paths[OLE DB Source Output]"
+              endId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extract FClub Data\Extract FClub_Member Data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -46,11 +1289,256 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\Data Flow Task"
+          Size="166.4,41.6"
+          Id="Package\Extract FClub Data"
           TopLeft="131.249998044223,52.866665721337" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Extract FClub Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Extract FClub Data\Extract FClub_Member Data"
+          TopLeft="23.9999932425361,201.416470396048" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Extract FClub Data\Extract FClub_Product Data"
+          TopLeft="272.799993242536,201.416470396048" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Extract FClub Data\Extract FClub_Room Data"
+          TopLeft="521.599993242536,201.416470396048" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Extract FClub Data\Extract FClub_Sale Data"
+          TopLeft="770.399993242536,201.416470396048" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Extract FClub Data\Extract FClub_SemesterGroups Data"
+          TopLeft="1019.19999324254,201.416470396048" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Extract FClub Data\Lookup Member Key"
+          TopLeft="54.8571437913545,286.305886368273" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
+          TopLeft="145.228568516945,243.016470396048">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.2894159722247"
+              Start="0,0"
+              End="0,35.7894159722247">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.7894159722247" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Extract FClub Data\Lookup Year Key"
+          TopLeft="72.0000012261527,368.282358106197" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output]"
+          TopLeft="142.057143791354,327.905886368273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.74285743479822,40.3764717379242"
+              Start="0,0"
+              End="8.74285743479822,32.8764717379242">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1882358689621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1882358689621"
+                    Point2="0,20.1882358689621"
+                    Point3="4,20.1882358689621" />
+                  <mssgle:LineSegment
+                    End="4.74285743479822,20.1882358689621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.74285743479822,20.1882358689621"
+                    Point2="8.74285743479822,20.1882358689621"
+                    Point3="8.74285743479822,24.1882358689621" />
+                  <mssgle:LineSegment
+                    End="8.74285743479822,32.8764717379242" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.8199580013509,25.1882358689621,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Extract FClub Data\OLE DB Destination"
+          TopLeft="75.4285727131123,458.823535846591" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output1]"
+          TopLeft="150.800001226153,409.882358106197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.82857148695962,48.9411777403941"
+              Start="0,0"
+              End="9.82857148695962,41.4411777403941">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.470588870197" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.470588870197"
+                    Point2="0,24.470588870197"
+                    Point3="4,24.470588870197" />
+                  <mssgle:LineSegment
+                    End="5.82857148695962,24.470588870197" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.82857148695962,24.470588870197"
+                    Point2="9.82857148695962,24.470588870197"
+                    Point3="9.82857148695962,28.470588870197" />
+                  <mssgle:LineSegment
+                    End="9.82857148695962,41.4411777403941" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.2771009752702,29.470588870197,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_Member Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_Product Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_Room Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_Sale Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_SemesterGroups Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup Member Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[Lookup Member Key]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup Year Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
