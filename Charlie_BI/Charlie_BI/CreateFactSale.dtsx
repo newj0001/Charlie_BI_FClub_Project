@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-FQ3KKMK"
   DTS:CreatorName="DESKTOP-FQ3KKMK\Newjan Thevarajah"
-  DTS:DTSID="{90113D32-B327-49BF-8615-83E431D70BFE}"
+  DTS:DTSID="{862185EA-3392-46F0-AB41-5446CF7ACFAA}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="8192"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="CreateFactSale"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{6F360C56-7B80-40E2-9A2C-0094EAA34306}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{9D5C9077-2C72-4CF8-A746-2A4CB9C1F29F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -951,7 +951,7 @@ where `refTable`.`id` = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[OLE DB Destination]</property>
+                  name="OpenRowset">[FactSale]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2075,7 +2075,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="166.4,41.6"
+          Size="166,42"
           Id="Package\Extract FClub Data"
           TopLeft="131.249998044223,52.866665721337" />
       </GraphLayout>
@@ -2087,95 +2087,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="248.8,41.6"
+          Size="171,42"
+          Id="Package\Extract FClub Data\Lookup product key"
+          TopLeft="800.000013623919,438.023535554879" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Extract FClub Data\OLE DB Destination"
+          TopLeft="795.428584974639,650.917656187698" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Extract FClub Data\Script Component"
+          TopLeft="547.428580751225,351.152946101258" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Extract FClub Data\Lookup Member Key"
+          TopLeft="799.020414604321,322.359666961617" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Extract FClub Data\Lookup room Key"
+          TopLeft="805.714299435519,557.929419589455" />
+        <NodeLayout
+          Size="249,42"
           Id="Package\Extract FClub Data\Extract FClub_Sale Data"
           TopLeft="757.844901962947,202.756305364589" />
         <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Extract FClub Data\Lookup Member Key"
-          TopLeft="799.020414604321,322.359666961617" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
-          TopLeft="884.232658283634,244.356305364589">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,78.0033615970276"
-              Start="0,0"
-              End="0,70.5033615970276">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.5033615970276" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Extract FClub Data\Lookup product key"
-          TopLeft="800.000013623919,438.023535554879" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Lookup Match Output]"
-          TopLeft="885.91021411412,363.959666961617">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74.0638685932628"
-              Start="0,0"
-              End="0,66.5638685932628">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,66.5638685932628" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,27.4772467966314,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\Extract FClub Data\Lookup room Key"
-          TopLeft="805.714299435519,557.929419589455" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Lookup Match Output1]"
-          TopLeft="885.857156529719,479.623535554879">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,78.3058840345759"
-              Start="0,0"
-              End="0,70.8058840345759">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.8058840345759" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,29.598254517288,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Extract FClub Data\OLE DB Destination"
-          TopLeft="795.428584974639,650.917656187698" />
+          Size="171,42"
+          Id="Package\Extract FClub Data\Flat File Destination"
+          TopLeft="525.714294667147,453.929418130895" />
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Match Output2]"
           TopLeft="883.371442205079,599.529419589455">
@@ -2200,10 +2138,54 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Extract FClub Data\Script Component"
-          TopLeft="547.428580751225,351.152946101258" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output1]"
+          TopLeft="885.857156529719,479.623535554879">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.3058840345759"
+              Start="0,0"
+              End="0,70.8058840345759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.8058840345759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,29.598254517288,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output]"
+          TopLeft="885.91021411412,363.959666961617">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.0638685932628"
+              Start="0,0"
+              End="0,66.5638685932628">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5638685932628" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,27.4772467966314,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Error Output]"
           TopLeft="799.020414604321,343.159666961617">
@@ -2240,10 +2222,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Extract FClub Data\Flat File Destination"
-          TopLeft="525.714294667147,453.929418130895" />
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Output 0]"
           TopLeft="628.628580751225,392.752946101258">
@@ -2278,11 +2256,56 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
+          TopLeft="884.232658283634,244.356305364589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.0033615970276"
+              Start="0,0"
+              End="0,70.5033615970276">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5033615970276" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Extract FClub_Sale Data">
+    design-time-name="Package\Extract FClub Data\Lookup product key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">`Product`</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2300,7 +2323,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2310,30 +2333,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Lookup product key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">`Product`</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2346,7 +2346,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2356,7 +2356,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2364,7 +2364,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\OLE DB Destination">
+    design-time-name="Package\Extract FClub Data\Extract FClub_Sale Data">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
