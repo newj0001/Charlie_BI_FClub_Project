@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="CreateDimMember"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{B1099889-BDAB-4BD3-89DC-0AB83AEF8451}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{2E56B33C-C31F-4C5F-A336-5E5EA260C8E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Klaus\Desktop\Error.txt">
+          DTS:ConnectionString="C:\BI sources\Error.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -37,7 +37,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="id"
-              DTS:DTSID="{3139711A-A9A8-4AA0-8017-DE9D12F5744C}"
+              DTS:DTSID="{DE085903-E53F-4891-8C82-3A601793EF11}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -45,7 +45,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="member_id"
-              DTS:DTSID="{B32F28BB-79F5-4930-8501-09A75ABC7565}"
+              DTS:DTSID="{9D093754-8815-4931-BBAD-F441C9F28F86}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -53,7 +53,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="product_id"
-              DTS:DTSID="{4AF2C335-91BE-4900-B877-78301B4C017B}"
+              DTS:DTSID="{DB29D8E2-51B0-43FD-93E1-CEB099E787C5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -61,7 +61,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="room_id"
-              DTS:DTSID="{411D696E-2927-4695-90FD-9EF154AECFFE}"
+              DTS:DTSID="{9FCA3771-980B-4D13-A994-1E84C1EB9663}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -69,7 +69,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="timestamp"
-              DTS:DTSID="{E6BC717E-90BD-46AE-8FF0-FFF5822FCCC6}"
+              DTS:DTSID="{B6F86374-3298-4372-AA65-70A434BE74FE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +77,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="price"
-              DTS:DTSID="{5455C466-064F-424D-9FE4-22169ED2B9F8}"
+              DTS:DTSID="{97E2329E-CFA1-497F-B52D-76B599D75072}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorCode"
-              DTS:DTSID="{E823CFB0-9091-4301-B859-3ADF2415F87E}"
+              DTS:DTSID="{E8050987-F645-446D-8A2F-84C4E7AAE02A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -93,7 +93,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorColumn"
-              DTS:DTSID="{79458C14-AD4D-409F-ACAD-96D48C03478D}"
+              DTS:DTSID="{1E201E6C-CA27-4B14-A97E-49F147526A40}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -102,7 +102,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorDescription"
-              DTS:DTSID="{6B1815D6-8B21-4A77-8836-C8A252072AFE}"
+              DTS:DTSID="{2CFAB586-5D5C-496C-A622-8742152BC223}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -607,17 +607,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="184,42"
-          Id="Package\Data Flow Task\Save data to database"
-          TopLeft="171.75,278" />
+          Size="207,42"
+          Id="Package\Data Flow Task\Convert from Text to string"
+          TopLeft="160.25,136" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Data Flow Task\Convert from string to number"
+          TopLeft="152.25,202" />
         <NodeLayout
           Size="172,44"
           Id="Package\Data Flow Task\ExtractMemberData"
           TopLeft="177.75,65" />
         <NodeLayout
-          Size="207,42"
-          Id="Package\Data Flow Task\Convert from Text to string"
-          TopLeft="160.25,136" />
+          Size="184,42"
+          Id="Package\Data Flow Task\Save data to database"
+          TopLeft="171.75,278" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="263.75,109">
@@ -640,32 +644,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="223,42"
-          Id="Package\Data Flow Task\Convert from string to number"
-          TopLeft="152.25,202" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="263.75,178">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,24"
-              Start="0,0"
-              End="0,16.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
           TopLeft="263.75,244">
@@ -680,6 +658,28 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="263.75,178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24"
+              Start="0,0"
+              End="0,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

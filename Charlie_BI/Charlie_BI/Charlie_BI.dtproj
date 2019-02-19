@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-FQ3KKMK</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt0JfElTqwESn2H9PCO6jnwAAAAACAAAAAAAQZgAAAAEAACAAAAC8/CpifzqnJGrVWNmuqg8y0Kv6SZ9DgBZriVI7stE2zAAAAAAOgAAAAAIAACAAAAAGPfdq23LoZSxkPq29Hm6ybiVYDoilZDvwfD2D4cjEcZAAAAD7zpx7MfQAdpkbzRR/jIfNJ3zmeoQBNkndmqQIPiD7SdgMAk88RydETMu/fNyh97vMFjn97qDGxudOP4COktL9mPc8CVRNgvNCkg2+PmJF5pSG3rYnEgGjhUItbtrAFW3n8ol2nXG+z8x9AxIndEm5huMjilsXJ7N5DeDZXffAbUbaJI016h8MYBlz2qjXDj5AAAAAdIcEqGV7HHZneqfqUhCSacw405eKhmqF4N+5kVbmAh+s4tVv5T+dm3Hr9T0M/2jx1m7tnM0q76k2FUo92HX7ig==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAt0JfElTqwESn2H9PCO6jnwAAAAACAAAAAAAQZgAAAAEAACAAAAAlck+SdafoOCLJqRtCT9mEZ+N2nc9D4e6rzF8EzMToZAAAAAAOgAAAAAIAACAAAADeRUh0w19iaeL97f56zhI3F5cPcsmLfJtrcj7HO2V5PpAAAACTYKIlTSlEvPKXKA9l0nlrDSDYXwlRhKwOjME3FvSzvYEq5ge73a8sHSKPpHemqwB9xCXlqaRiRE7Z+AQhW7jIwOGRcARg5w6ttsR6GOebuCfdWZ60ayGpm+8V9ZQZgUAwbQsP4xiUWMZH9g36dzSNXMto9wL24oQGV+32vPPokzsiB2MvubGQuaIUF6ZKuJ1AAAAAe8qSY2pXbyyuG25hAU6bXob+2GPMSjVknCKxwJesFh2HQXc2fvDogv7DFLmixLlHmOqAI9BmX3xkDqnZv7vv1Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -139,7 +139,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=C:\BI sources\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -197,7 +197,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\fclub_safe.mdb</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\BI sources\fclub_safe.mdb</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -223,10 +223,10 @@
                 <SSIS:Property SSIS:Name="Name">CreateFactSale</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">22</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{9D5C9077-2C72-4CF8-A746-2A4CB9C1F29F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{DA3392D8-CDA2-429A-9F18-1D837BC678F3}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -289,7 +289,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Christian\Desktop\Errors.txt</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\BI sources\Error.txt</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -380,6 +380,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -421,10 +423,10 @@
                 <SSIS:Property SSIS:Name="Name">CreateDimMember</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B1099889-BDAB-4BD3-89DC-0AB83AEF8451}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E56B33C-C31F-4C5F-A336-5E5EA260C8E0}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -487,7 +489,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Klaus\Desktop\Error.txt</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\BI sources\Error.txt</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -578,6 +580,8 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">
+                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -619,10 +623,10 @@
                 <SSIS:Property SSIS:Name="Name">CreateDimProduct</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6A507918-3754-4E8E-9613-8354C6F8A538}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B471A74D-559D-4213-9281-C616CFE30430}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -640,7 +644,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\produktkategori.xlsx;Extended Properties="EXCEL 12.0 XML;HDR=YES";</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\BI sources\produktkategori.xlsx;Extended Properties="EXCEL 12.0 XML;HDR=YES";</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -655,7 +659,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\produktkategori.xlsx</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\BI sources\produktkategori.xlsx</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -728,7 +732,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\produktkategori.xlsx</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\BI sources\produktkategori.xlsx</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -802,7 +806,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\Klaus\Desktop\Error.txt</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\BI sources\Error.txt</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>

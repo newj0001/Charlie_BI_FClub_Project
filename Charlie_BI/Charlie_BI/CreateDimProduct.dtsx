@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="CreateDimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{6A507918-3754-4E8E-9613-8354C6F8A538}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{B471A74D-559D-4213-9281-C616CFE30430}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\produktkategori.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\BI sources\produktkategori.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -39,7 +39,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\Klaus\Desktop\Error.txt">
+          DTS:ConnectionString="C:\BI sources\Error.txt">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="id"
-              DTS:DTSID="{02479BC0-B4B8-45D2-9669-501C99EBF167}"
+              DTS:DTSID="{F1AD52BB-C31F-4F31-892B-A792852CE0DD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -55,7 +55,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="member_id"
-              DTS:DTSID="{02E099E1-6F56-4CB5-AF3A-ABEB38084609}"
+              DTS:DTSID="{ADB8A71F-C90D-4CBA-858B-6E786F984D4F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -63,7 +63,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="product_id"
-              DTS:DTSID="{981048F9-3700-4781-9B1C-B134BCC1FDAC}"
+              DTS:DTSID="{9647A764-6120-4EC3-A3C8-866C53285507}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -71,7 +71,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="room_id"
-              DTS:DTSID="{1BF530B1-0BE0-419D-9854-249D57868A54}"
+              DTS:DTSID="{D15A8AF0-2178-41B6-A09D-93C20AF25A40}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -79,7 +79,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="timestamp"
-              DTS:DTSID="{244E5811-0208-4723-9F3F-9CA5B9CB9214}"
+              DTS:DTSID="{E9001EFC-4211-4C9E-B2C1-5D00E84D0086}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -87,7 +87,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="price"
-              DTS:DTSID="{9D1F534D-0DBB-4024-AE26-ABDE5308C72E}"
+              DTS:DTSID="{FEA5CD17-A808-49FA-ADD5-A938F488553F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -95,7 +95,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorCode"
-              DTS:DTSID="{C7D463AB-FB70-4A1E-948C-654439F68FB1}"
+              DTS:DTSID="{F2310B69-88BC-4BDC-B7F0-E6BC60791B7C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorColumn"
-              DTS:DTSID="{6D5CC1CA-CEFA-484E-8301-51C01BAD8B57}"
+              DTS:DTSID="{BD316BC6-471C-4867-A9A1-F3058F8A0194}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="ErrorDescription"
-              DTS:DTSID="{F798E500-40F2-4711-A284-054B66B8B19B}"
+              DTS:DTSID="{47D5DBCB-F758-47E8-ACD9-0A671F19F966}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>

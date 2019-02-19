@@ -5,6 +5,6 @@
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=C:\Users\Klaus\Documents\Word, pdf og lignende\Programmering\4. semester\BI\Fclub data\Fclub data\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
+      DTS:ConnectionString="Data Source=C:\BI sources\fclub_safe.mdb;Provider=Microsoft.Jet.OLEDB.4.0;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
