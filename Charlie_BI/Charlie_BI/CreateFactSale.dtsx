@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="CreateFactSale"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{DA3392D8-CDA2-429A-9F18-1D837BC678F3}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{CAC89656-EDFF-493C-8223-2F09324A2B24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -125,6 +125,84 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Extract FClub Data\Convert time to DT_STR"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert time to DT_STR"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Convert time to DT_STR.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract FClub Data\Convert time to DT_STR.Inputs[Data Conversion Input].Columns[Time]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Time"
+                      lineageId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output].Columns[Time]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Extract FClub Data\Convert time to DT_STR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output].Columns[Copy of Time]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output].Columns[Copy of Time]"
+                      name="Copy of Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output].Columns[Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Convert time to DT_STR.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Extract FClub Data\Extract FClub_Sale Data"
               componentClassID="Microsoft.OLEDBSource"
@@ -462,11 +540,11 @@ SELECT * FROM SemesterGroups</property>
               </inputs>
             </component>
             <component
-              refId="Package\Extract FClub Data\Lookup Member Key"
+              refId="Package\Extract FClub Data\Lookup"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup Member Key"
+              name="Lookup"
               usesDispositions="true"
               version="6">
               <properties>
@@ -475,14 +553,14 @@ SELECT * FROM SemesterGroups</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from `Member`</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimTime]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from `Member`) `refTable`
-where `refTable`.`id` = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimTime]) [refTable]
+where [refTable].[Time30] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -513,7 +591,167 @@ where `refTable`.`id` = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="active" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="year" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="balance" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TimeAltKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Time30" dataType="DT_STR" length="8" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Hour30" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MinuteNumber" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SecondNumber" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TimeInSecond" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HourlyBucket" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DayTimeBucketGroupKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayTimeBucket" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output].Columns[Copy of Time]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract FClub Data\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input].Columns[Copy of Time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="Copy of Time"
+                      lineageId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output].Columns[Copy of Time]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Time30</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output].Columns[TimeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TimeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Lookup Member Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Member Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimMember]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimMember]) [refTable]
+where [refTable].[MemberID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearStarted" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -531,8 +769,8 @@ where `refTable`.`id` = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract FClub Data\Lookup Member Key.Connections[OleDbConnection]"
-                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -542,19 +780,23 @@ where `refTable`.`id` = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input].Columns[member_id]"
+                      refId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input].Columns[MemberKey]"
                       cachedDataType="i4"
                       cachedName="member_id"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]">
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      name="MemberKey"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">id</property>
+                          name="JoinToReferenceColumn">MemberID</property>
                         <property
-                          dataType="System.Null"
+                          dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
+                          name="CopyFromReferenceColumn">MemberKey</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -569,22 +811,6 @@ where `refTable`.`id` = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Match Output].Columns[id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Match Output].Columns[id]"
-                      name="id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">id</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -633,14 +859,14 @@ where `refTable`.`id` = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from `Product`</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimProduct]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from `Product`) `refTable`
-where `refTable`.`id` = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimProduct]) [refTable]
+where [refTable].[MemberID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -671,7 +897,7 @@ where `refTable`.`id` = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="name" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="price" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="active" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="deactivate_date" dataType="DT_DATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GeneralCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpecificCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DeactivatedAtDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -689,8 +915,8 @@ where `refTable`.`id` = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract FClub Data\Lookup product key.Connections[OleDbConnection]"
-                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -700,19 +926,23 @@ where `refTable`.`id` = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extract FClub Data\Lookup product key.Inputs[Lookup Input].Columns[product_id]"
+                      refId="Package\Extract FClub Data\Lookup product key.Inputs[Lookup Input].Columns[ProductKey]"
                       cachedDataType="i4"
                       cachedName="product_id"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[product_id]">
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">id</property>
+                          name="JoinToReferenceColumn">MemberID</property>
                         <property
-                          dataType="System.Null"
+                          dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
+                          name="CopyFromReferenceColumn">ProductKey</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -727,22 +957,6 @@ where `refTable`.`id` = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Extract FClub Data\Lookup product key.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Extract FClub Data\Lookup product key.Outputs[Lookup Match Output].Columns[id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Extract FClub Data\Lookup product key.Outputs[Lookup Match Output].Columns[id]"
-                      name="id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">id</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -791,14 +1005,14 @@ where `refTable`.`id` = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from `Room`</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimRoom]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from `Room`) `refTable`
-where `refTable`.`id` = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimRoom]) [refTable]
+where [refTable].[RoomKey] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -829,7 +1043,7 @@ where `refTable`.`id` = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="description" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="RoomKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RoomID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Description" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -847,8 +1061,8 @@ where `refTable`.`id` = ?</property>
               <connections>
                 <connection
                   refId="Package\Extract FClub Data\Lookup room Key.Connections[OleDbConnection]"
-                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  connectionManagerID="{C2878F5F-592B-4A4E-B4EA-369E242FB498}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.Charlie_BI_FClub]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -858,19 +1072,23 @@ where `refTable`.`id` = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extract FClub Data\Lookup room Key.Inputs[Lookup Input].Columns[room_id]"
+                      refId="Package\Extract FClub Data\Lookup room Key.Inputs[Lookup Input].Columns[RoomKey]"
                       cachedDataType="i4"
                       cachedName="room_id"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[room_id]">
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[room_id]"
+                      name="RoomKey"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">id</property>
+                          name="JoinToReferenceColumn">RoomKey</property>
                         <property
-                          dataType="System.Null"
+                          dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
+                          name="CopyFromReferenceColumn">RoomKey</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -885,22 +1103,6 @@ where `refTable`.`id` = ?</property>
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Extract FClub Data\Lookup room Key.Inputs[Lookup Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Extract FClub Data\Lookup room Key.Outputs[Lookup Match Output].Columns[id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Extract FClub Data\Lookup room Key.Outputs[Lookup Match Output].Columns[id]"
-                      name="id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">id</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -1011,32 +1213,26 @@ where `refTable`.`id` = ?</property>
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Extract FClub_Sale Data.id]"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[member_id]"
                       cachedDataType="i4"
                       cachedName="member_id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[member_id]"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]" />
                     <inputColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
                       cachedDataType="i4"
                       cachedName="product_id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[product_id]" />
                     <inputColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[room_id]"
                       cachedDataType="i4"
                       cachedName="room_id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RoomKey]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[room_id]" />
-                    <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[timestamp]"
-                      cachedDataType="date"
-                      cachedName="timestamp"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timestamp]"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[timestamp]" />
                     <inputColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
                       cachedDataType="i4"
@@ -1044,62 +1240,42 @@ where `refTable`.`id` = ?</property>
                       externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[price]" />
                     <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id1]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TimeKey]"
                       cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup Member Key.id]"
-                      lineageId="Package\Extract FClub Data\Lookup Member Key.Outputs[Lookup Match Output].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id2]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup product key.id]"
-                      lineageId="Package\Extract FClub Data\Lookup product key.Outputs[Lookup Match Output].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id3]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup room Key.id]"
-                      lineageId="Package\Extract FClub Data\Lookup room Key.Outputs[Lookup Match Output].Columns[id]" />
+                      cachedName="TimeKey"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      lineageId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output].Columns[TimeKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Extract FClub_Sale Data.id]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
                       dataType="i4"
-                      name="Extract FClub_Sale Data.id" />
+                      name="ID" />
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[member_id]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       dataType="i4"
-                      name="member_id" />
+                      name="MemberKey" />
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
                       dataType="i4"
-                      name="product_id" />
+                      name="ProductKey" />
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_id]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RoomKey]"
                       dataType="i4"
-                      name="room_id" />
+                      name="RoomKey" />
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timestamp]"
-                      dataType="dbTimeStamp"
-                      name="timestamp" />
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      dataType="i4"
+                      name="TimeKey" />
                     <externalMetadataColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
                       dataType="i4"
                       name="price" />
-                    <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup Member Key.id]"
-                      dataType="i4"
-                      name="Lookup Member Key.id" />
-                    <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup product key.id]"
-                      dataType="i4"
-                      name="Lookup product key.id" />
-                    <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Lookup room Key.id]"
-                      dataType="i4"
-                      name="Lookup room Key.id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2025,8 +2201,181 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Extract FClub Data\Timestamp to string"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Timestamp to string"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Timestamp to string.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract FClub Data\Timestamp to string.Inputs[Data Conversion Input].Columns[timestamp]"
+                      cachedDataType="date"
+                      cachedName="timestamp"
+                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[timestamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Extract FClub Data\Timestamp to string.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output].Columns[timestampAsString]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output].Columns[timestampAsString]"
+                      name="timestampAsString"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[timestamp]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Timestamp to string.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract FClub Data\Transform Timestamp to Timestring"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Transform Timestamp to Timestring"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Inputs[Derived Column Input].Columns[timestampAsString]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestampAsString"
+                      lineageId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output].Columns[timestampAsString]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Extract FClub Data\Transform Timestamp to Timestring.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output].Columns[Time]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([SUBSTRING](#{Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output].Columns[timestampAsString]},12,8))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(SUBSTRING(timestampAsString,12,8))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Extract FClub Data\Transform Timestamp to Timestring.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
+            <path
+              refId="Package\Extract FClub Data.Paths[Data Conversion Output]"
+              endId="Package\Extract FClub Data\Transform Timestamp to Timestring.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Extract FClub Data\Timestamp to string.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Extract FClub Data.Paths[Data Conversion Output1]"
+              endId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Extract FClub Data\Convert time to DT_STR.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Extract FClub Data.Paths[Derived Column Output]"
+              endId="Package\Extract FClub Data\Convert time to DT_STR.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Extract FClub Data\Transform Timestamp to Timestring.Outputs[Derived Column Output]" />
             <path
               refId="Package\Extract FClub Data.Paths[Lookup Error Output]"
               endId="Package\Extract FClub Data\Script Component.Inputs[Input 0]"
@@ -2044,9 +2393,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               startId="Package\Extract FClub Data\Lookup product key.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Extract FClub Data.Paths[Lookup Match Output2]"
-              endId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Extract FClub Data\Timestamp to string.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
               startId="Package\Extract FClub Data\Lookup room Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Extract FClub Data.Paths[Lookup Match Output3]"
+              endId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Extract FClub Data.Paths[OLE DB Source Output]"
               endId="Package\Extract FClub Data\Lookup Member Key.Inputs[Lookup Input]"
@@ -2085,169 +2439,153 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     design-time-name="Package\Extract FClub Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\Extract FClub Data\Lookup product key"
-          TopLeft="800.000013623919,438.023535554879" />
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Extract FClub Data\OLE DB Destination"
-          TopLeft="795.428584974639,650.917656187698" />
+          TopLeft="424.000013623919,303.023535554879" />
         <NodeLayout
           Size="162,42"
           Id="Package\Extract FClub Data\Script Component"
-          TopLeft="547.428580751225,351.152946101258" />
+          TopLeft="170.428580751225,239.152946101258" />
         <NodeLayout
           Size="174,42"
           Id="Package\Extract FClub Data\Lookup Member Key"
-          TopLeft="799.020414604321,322.359666961617" />
+          TopLeft="407.020414604321,213.359666961617" />
         <NodeLayout
           Size="161,42"
           Id="Package\Extract FClub Data\Lookup room Key"
-          TopLeft="805.714299435519,557.929419589455" />
+          TopLeft="428.714299435519,380.929419589455" />
         <NodeLayout
-          Size="249,42"
+          Size="192,42"
           Id="Package\Extract FClub Data\Extract FClub_Sale Data"
-          TopLeft="757.844901962947,202.756305364589" />
+          TopLeft="359.844901962947,140.756305364589" />
         <NodeLayout
           Size="171,42"
           Id="Package\Extract FClub Data\Flat File Destination"
-          TopLeft="525.714294667147,453.929418130895" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Lookup Match Output2]"
-          TopLeft="883.371442205079,599.529419589455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.3882365982425"
-              Start="0,0"
-              End="0,43.8882365982425">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.8882365982425" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.1394307991213,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="156.714294667147,325.929418130895" />
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Match Output1]"
-          TopLeft="885.857156529719,479.623535554879">
+          TopLeft="509.357156529719,345.023535554879">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78.3058840345759"
+              EndConnector="0,35.905884034576"
               Start="0,0"
-              End="0,70.8058840345759">
+              End="0,28.405884034576">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.8058840345759" />
+                    End="0,28.405884034576" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,29.598254517288,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,8.39825451728802,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Match Output]"
-          TopLeft="885.91021411412,363.959666961617">
+          TopLeft="521.687081270988,255.359666961617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,74.0638685932628"
+              EndConnector="-12.1870676470686,47.663868593262"
               Start="0,0"
-              End="0,66.5638685932628">
+              End="-12.1870676470686,40.163868593262">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.5638685932628" />
+                    End="0,15.3261243954456" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.3261243954456"
+                    Point2="0,19.3261243954457"
+                    Point3="-4,19.3261243954457" />
+                  <mssgle:LineSegment
+                    End="-8.1870676470686,19.3261243954457" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.1870676470686,19.3261243954457"
+                    Point2="-12.1870676470686,19.3261243954457"
+                    Point3="-12.1870676470686,23.3261243954457" />
+                  <mssgle:LineSegment
+                    End="-12.1870676470686,40.163868593262" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,27.4772467966314,96.3827734375,11.609375"
+              BoundingBox="-54.2849205422843,24.3261243954457,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Error Output]"
-          TopLeft="799.020414604321,343.159666961617">
+          TopLeft="407.020414604321,234.359666961617">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89.1918338530958,28.7932791396416"
+              EndConnector="-74.591833853096,25.793279139641"
               Start="0,0"
-              End="-81.6918338530958,28.7932791396416">
+              End="-67.091833853096,25.793279139641">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-40.5959169265479,0" />
+                    End="-33.295916926548,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-40.5959169265479,0"
-                    Point2="-44.5959169265479,0"
-                    Point3="-44.5959169265479,4" />
+                    Point1="-33.295916926548,0"
+                    Point2="-37.295916926548,0"
+                    Point3="-37.295916926548,4" />
                   <mssgle:LineSegment
-                    End="-44.5959169265479,24.7932791396416" />
+                    End="-37.295916926548,21.793279139641" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44.5959169265479,24.7932791396416"
-                    Point2="-44.5959169265479,28.7932791396416"
-                    Point3="-48.5959169265479,28.7932791396416" />
+                    Point1="-37.295916926548,21.793279139641"
+                    Point2="-37.295916926548,25.793279139641"
+                    Point3="-41.295916926548,25.793279139641" />
                   <mssgle:LineSegment
-                    End="-81.6918338530958,28.7932791396416" />
+                    End="-67.091833853096,25.793279139641" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-90.4623036452979,-17.609375,91.7327734375,11.609375"
+              BoundingBox="-83.162303645298,-17.609375,91.7327734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Output 0]"
-          TopLeft="628.628580751225,392.752946101258">
+          TopLeft="251.428580751225,281.152946101258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.3142860840779,61.1764720296364"
+              EndConnector="-9.21428608407803,44.776472029637"
               Start="0,0"
-              End="-17.3142860840779,53.6764720296364">
+              End="-9.21428608407803,37.276472029637">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5882360148182" />
+                    End="0,18.3882360148185" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.5882360148182"
-                    Point2="0,30.5882360148182"
-                    Point3="-4,30.5882360148182" />
+                    Point1="0,18.3882360148185"
+                    Point2="0,22.3882360148185"
+                    Point3="-4,22.3882360148185" />
                   <mssgle:LineSegment
-                    End="-13.3142860840779,30.5882360148182" />
+                    End="-5.21428608407803,22.3882360148185" />
                   <mssgle:CubicBezierSegment
-                    Point1="-13.3142860840779,30.5882360148182"
-                    Point2="-17.3142860840779,30.5882360148182"
-                    Point3="-17.3142860840779,34.5882360148182" />
+                    Point1="-5.21428608407803,22.3882360148185"
+                    Point2="-9.21428608407803,22.3882360148185"
+                    Point3="-9.21428608407803,26.3882360148185" />
                   <mssgle:LineSegment
-                    End="-17.3142860840779,53.6764720296364" />
+                    End="-9.21428608407803,37.276472029637" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2258,24 +2596,218 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
-          TopLeft="884.232658283634,244.356305364589">
+          TopLeft="455.844901962947,182.756305364589">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78.0033615970276"
+              EndConnector="38.175512641374,30.603361597028"
               Start="0,0"
-              End="0,70.5033615970276">
+              End="38.175512641374,23.103361597028">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.5033615970276" />
+                    End="0,11.301680798514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.301680798514"
+                    Point2="0,15.301680798514"
+                    Point3="4,15.301680798514" />
+                  <mssgle:LineSegment
+                    End="34.175512641374,15.301680798514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.175512641374,15.301680798514"
+                    Point2="38.175512641374,15.301680798514"
+                    Point3="38.175512641374,19.301680798514" />
+                  <mssgle:LineSegment
+                    End="38.175512641374,23.103361597028" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract FClub Data\OLE DB Destination"
+          TopLeft="435,784" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Extract FClub Data\Lookup"
+          TopLeft="445,666" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\Extract FClub Data\Transform Timestamp to Timestring"
+          TopLeft="439,521" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Extract FClub Data\Timestamp to string"
+          TopLeft="427,446" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output2]"
+          TopLeft="511.35714971776,422.929419589455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.0705804105449"
+              Start="0,0"
+              End="0,15.5705804105449">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5705804105449" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,1.98060270527247,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Data Conversion Output]"
+          TopLeft="513.5,488">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.5,33"
+              Start="0,0"
+              End="49.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="4,16.5" />
+                  <mssgle:LineSegment
+                    End="45.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.5,16.5"
+                    Point2="49.5,16.5"
+                    Point3="49.5,20.5" />
+                  <mssgle:LineSegment
+                    End="49.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Extract FClub Data\Convert time to DT_STR"
+          TopLeft="430,591" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Derived Column Output]"
+          TopLeft="563,563">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36,28"
+              Start="0,0"
+              End="-36,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-32,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32,14"
+                    Point2="-36,14"
+                    Point3="-36,18" />
+                  <mssgle:LineSegment
+                    End="-36,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Data Conversion Output1]"
+          TopLeft="527,633">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.5,33"
+              Start="0,0"
+              End="-25.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
+                  <mssgle:LineSegment
+                    End="-21.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.5,16.5"
+                    Point2="-25.5,16.5"
+                    Point3="-25.5,20.5" />
+                  <mssgle:LineSegment
+                    End="-25.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output3]"
+          TopLeft="501.5,708">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19,76"
+              Start="0,0"
+              End="19,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34"
+                    Point2="0,38"
+                    Point3="4,38" />
+                  <mssgle:LineSegment
+                    End="15,38" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,38"
+                    Point2="19,38"
+                    Point3="19,42" />
+                  <mssgle:LineSegment
+                    End="19,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.69138671875,43,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2287,20 +2819,79 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">`Product`</Value>
+          type="q3:string">[dbo].[DimProduct]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup Member Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimMember]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup room Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimRoom]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Extract FClub_Sale Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -2318,61 +2909,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Lookup Member Key">
+    design-time-name="Package\Extract FClub Data\Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">`Member`</Value>
+          type="q3:string">[dbo].[DimTime]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Lookup room Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">`Room`</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Extract FClub_Sale Data">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
