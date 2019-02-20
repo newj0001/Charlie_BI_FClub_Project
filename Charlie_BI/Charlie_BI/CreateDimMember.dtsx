@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="CreateDimMember"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{2E56B33C-C31F-4C5F-A336-5E5EA260C8E0}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{E9498201-D558-4D31-B480-385B3D69E94A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -126,40 +126,40 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Convert from string to number"
+              refId="Package\Data Flow Task\Convert year from string to number"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Convert from string to number"
+              name="Convert year from string to number"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Convert from string to number.Inputs[Data Conversion Input]"
+                  refId="Package\Data Flow Task\Convert year from string to number.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Convert from string to number.Inputs[Data Conversion Input].Columns[yearConverted]"
+                      refId="Package\Data Flow Task\Convert year from string to number.Inputs[Data Conversion Input].Columns[yearConverted]"
                       cachedDataType="wstr"
                       cachedLength="4"
                       cachedName="yearConverted"
-                      lineageId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]" />
+                      lineageId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Output]"
+                  refId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Convert from string to number.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Data Flow Task\Convert year from string to number.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]"
+                      refId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]"
+                      lineageId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]"
                       name="YearAsNumber"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -167,7 +167,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -178,22 +178,22 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Error Output]"
+                  refId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Convert from string to number.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Data Flow Task\Convert year from string to number.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -202,40 +202,40 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Convert from Text to string"
+              refId="Package\Data Flow Task\Convert year from Text to string"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
-              name="Convert from Text to string"
+              name="Convert year from Text to string"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Convert from Text to string.Inputs[Data Conversion Input]"
+                  refId="Package\Data Flow Task\Convert year from Text to string.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Convert from Text to string.Inputs[Data Conversion Input].Columns[year]"
+                      refId="Package\Data Flow Task\Convert year from Text to string.Inputs[Data Conversion Input].Columns[year]"
                       cachedDataType="nText"
                       cachedName="year"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[year]" />
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[year]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output]"
+                  refId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Convert from Text to string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Data Flow Task\Convert year from Text to string.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]"
+                      refId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="4"
-                      lineageId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]"
+                      lineageId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output].Columns[yearConverted]"
                       name="yearConverted"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -243,7 +243,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[year]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[year]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -254,22 +254,154 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Error Output]"
+                  refId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Convert from Text to string.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Data Flow Task\Convert year from Text to string.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Extract semester data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract semester data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">SemesterGroups</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Extract semester data.Connections[OleDbConnection]"
+                  connectionManagerID="{D7BFBAB2-919E-4D79-A47C-3BDF278B83E8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[fclub_safe]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[member_id]"
+                      name="member_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[semester]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].ExternalColumns[semester]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[semester]"
+                      name="semester"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].ExternalColumns[member_id]"
+                      dataType="i4"
+                      name="member_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].ExternalColumns[periode]"
+                      dataType="wstr"
+                      length="50"
+                      name="periode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].ExternalColumns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      name="semester" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[member_id]"
+                      name="member_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[semester]"
+                      name="semester" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -424,6 +556,225 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task\Join semester to members based on ID"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Join semester to members based on ID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[active]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[year]"
+                      cachedDataType="nText"
+                      cachedName="year"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[year]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Right Input].Columns[member_id]"
+                      cachedDataType="i4"
+                      cachedName="member_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[member_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Right Input].Columns[semester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="semester"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[semester]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[active]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[active]"
+                      name="active">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[active]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[year]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[semester]"
+                      name="semester">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Right Input].Columns[semester]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[id]"
+                      name="id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Replace semester nulls"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace semester nulls"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Replace semester nulls.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Replace semester nulls.Inputs[Derived Column Input].Columns[semester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="semester"
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[semester]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Replace semester nulls.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Output].Columns[SemesterNoNulls]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Output].Columns[SemesterNoNulls]"
+                      name="SemesterNoNulls"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[semester]}) ? "Ikke registreret" : #{Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[semester]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(semester) ? "Ikke registreret" : semester</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Replace semester nulls.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\Save data to database"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -439,7 +790,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimMember]</property>
+                  name="OpenRowset">[DimMember]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -499,20 +850,28 @@
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
+                      cachedSortKeyPosition="1"
                       externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MemberID]"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]" />
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[active]"
                       cachedDataType="i2"
                       cachedName="active"
                       externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]" />
+                      lineageId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output].Columns[active]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[YearAsNumber]"
                       cachedDataType="i4"
                       cachedName="YearAsNumber"
                       externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[YearStarted]"
-                      lineageId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]" />
+                      lineageId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Output].Columns[YearAsNumber]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[SemesterNoNulls]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SemesterNoNulls"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
+                      lineageId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Output].Columns[SemesterNoNulls]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -532,6 +891,11 @@
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MemberKey]"
                       dataType="i4"
                       name="MemberKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Semester]"
+                      dataType="wstr"
+                      length="50"
+                      name="Semester" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -560,23 +924,273 @@
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[member_id]"
+                      cachedDataType="i4"
+                      cachedName="member_id"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[member_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[semester]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="semester"
+                      lineageId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[semester]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[member_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[member_id]"
+                      name="member_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[member_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[semester]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[semester]"
+                      name="semester">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output].Columns[semester]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="nText"
+                      cachedName="year"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[id]"
+                      name="id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[active]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[active]"
+                      name="active">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[year]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\Convert from string to number.Inputs[Data Conversion Input]"
+              endId="Package\Data Flow Task\Convert year from string to number.Inputs[Data Conversion Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Convert from Text to string.Outputs[Data Conversion Output]" />
+              startId="Package\Data Flow Task\Convert year from Text to string.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
               endId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Convert from string to number.Outputs[Data Conversion Output]" />
+              startId="Package\Data Flow Task\Convert year from string to number.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Convert year from Text to string.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Replace semester nulls.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Replace semester nulls.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Join semester to members based on ID.Outputs[Merge Join Output]" />
             <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Convert from Text to string.Inputs[Data Conversion Input]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Extract semester data.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Join semester to members based on ID.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -605,59 +1219,165 @@
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="207,42"
-          Id="Package\Data Flow Task\Convert from Text to string"
-          TopLeft="160.25,136" />
+          Size="231,42"
+          Id="Package\Data Flow Task\Convert year from Text to string"
+          TopLeft="275.972222222222,362.222222222222" />
         <NodeLayout
-          Size="223,42"
-          Id="Package\Data Flow Task\Convert from string to number"
-          TopLeft="152.25,202" />
+          Size="247,42"
+          Id="Package\Data Flow Task\Convert year from string to number"
+          TopLeft="267.972222222222,428.222222222222" />
         <NodeLayout
           Size="172,44"
           Id="Package\Data Flow Task\ExtractMemberData"
-          TopLeft="177.75,65" />
+          TopLeft="206.791666666667,48.6666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="391.472222222222,404.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.9999999999998"
+              Start="0,0"
+              End="0,16.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Data Flow Task\Extract semester data"
+          TopLeft="419.666666666667,52.6666666666667" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="445.666666666667,123.666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="510.666666666667,94.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16,29"
+              Start="0,0"
+              End="-16,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5"
+                    Point2="0,14.5"
+                    Point3="-4,14.5" />
+                  <mssgle:LineSegment
+                    End="-12,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,14.5"
+                    Point2="-16,14.5"
+                    Point3="-16,18.5" />
+                  <mssgle:LineSegment
+                    End="-16,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Data Flow Task\Sort 1"
+          TopLeft="241.291666666667,123.666666666667" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="293.791666666667,92.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="264,42"
+          Id="Package\Data Flow Task\Join semester to members based on ID"
+          TopLeft="259.472222222222,199.444444444444" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="294.791666666667,165.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.0138888888886,33.7777777777778"
+              Start="0,0"
+              End="54.0138888888886,26.2777777777778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.144578313253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.144578313253"
+                    Point2="0,20.144578313253"
+                    Point3="4,20.144578313253" />
+                  <mssgle:LineSegment
+                    End="50.0138888888886,20.144578313253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.0138888888886,20.144578313253"
+                    Point2="54.0138888888886,20.144578313253"
+                    Point3="54.0138888888886,24.144578313253" />
+                  <mssgle:LineSegment
+                    End="54.0138888888886,26.2777777777778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="184,42"
           Id="Package\Data Flow Task\Save data to database"
-          TopLeft="171.75,278" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="263.75,109">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27"
-              Start="0,0"
-              End="0,19.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="299.472222222222,534.222222222221" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
-          TopLeft="263.75,244">
+          TopLeft="391.472222222222,470.222222222222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34"
+              EndConnector="0,63.999999999999"
               Start="0,0"
-              End="0,26.5">
+              End="0,56.499999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,56.499999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -667,19 +1387,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="263.75,178">
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="494.666666666667,165.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24"
+              EndConnector="-60.5277777777781,33.7777777777778"
               Start="0,0"
-              End="0,16.5">
+              End="-60.5277777777781,26.2777777777778">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
+                    End="0,16.144578313253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.144578313253"
+                    Point2="0,20.144578313253"
+                    Point3="-4,20.144578313253" />
+                  <mssgle:LineSegment
+                    End="-56.5277777777781,20.144578313253" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-56.5277777777781,20.144578313253"
+                    Point2="-60.5277777777781,20.144578313253"
+                    Point3="-60.5277777777781,24.144578313253" />
+                  <mssgle:LineSegment
+                    End="-60.5277777777781,26.2777777777778" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -688,11 +1420,79 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Data Flow Task\Replace semester nulls"
+          TopLeft="297.972222222222,279.555555555554" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="391.472222222222,241.444444444444">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.1111111111099"
+              Start="0,0"
+              End="0,30.6111111111099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6111111111099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="391.472222222222,321.555555555554">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.6666666666678"
+              Start="0,0"
+              End="0,33.1666666666678">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.1666666666678" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Done. transform eventuelt IsActive fra 0 og 1 til ja og nej."
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="130,88"
+          Id="2707fb7f-f8ee-4db0-9439-e25c05933307"
+          TopLeft="326.472222222222,590.666666666667" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\ExtractMemberData">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Extract semester data">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
