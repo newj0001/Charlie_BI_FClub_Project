@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="CreateDimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{0BDD187B-00BB-4E43-8E48-904E0BF1D6E1}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{18D5725D-0DD6-4EA2-A64A-61BE3C14BEB5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -547,34 +547,34 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[id]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[price]"
                       cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[active]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]" />
+                      cachedName="price"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[name]"
                       cachedDataType="nText"
                       cachedName="name"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[price]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[id]"
                       cachedDataType="i4"
-                      cachedName="price"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[price]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[deactivate_date]"
                       cachedDataType="date"
                       cachedName="deactivate_date"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[deactivate_date]"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[DeactivatedAtDate]"
                       lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Specific]"
@@ -602,39 +602,40 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[GeneralCategory]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="nText"
                       name="GeneralCategory" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MiddleCategory]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="nText"
                       name="MiddleCategory" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[SpecificCategory]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="nText"
                       name="SpecificCategory" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
                       dataType="i4"
-                      name="id" />
+                      name="ProductKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[active]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
                       dataType="i2"
-                      name="active" />
+                      name="IsActive" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                       dataType="nText"
-                      name="name" />
+                      name="Name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       dataType="i4"
-                      name="price" />
+                      name="Price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[deactivate_date]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[DeactivatedAtDate]"
                       dataType="dbTimeStamp"
-                      name="deactivate_date" />
+                      name="DeactivatedAtDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2078,7 +2079,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="212,67" />
       </GraphLayout>
@@ -2094,51 +2095,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
           Id="Package\Data Flow Task\ExtractMemberData"
           TopLeft="61,100" />
         <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Data Flow Task\Excel Source"
-          TopLeft="349,102" />
+          Size="120,42"
+          Id="Package\Data Flow Task\Union All"
+          TopLeft="232.380956338377,193.725492913005" />
         <NodeLayout
-          Size="183.2,41.6"
+          Size="183,42"
           Id="Package\Data Flow Task\Save data to database"
           TopLeft="201.761905524195,433.921570758094" />
         <NodeLayout
-          Size="120,41.6"
-          Id="Package\Data Flow Task\Union All"
-          TopLeft="232.380956338377,193.725492913005" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="147,144">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="145.380956338377,49.7254929130053"
-              Start="0,0"
-              End="145.380956338377,42.2254929130053">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.8627464565026" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.8627464565026"
-                    Point2="0,24.8627464565026"
-                    Point3="4,24.8627464565026" />
-                  <mssgle:LineSegment
-                    End="141.380956338377,24.8627464565026" />
-                  <mssgle:CubicBezierSegment
-                    Point1="141.380956338377,24.8627464565026"
-                    Point2="145.380956338377,24.8627464565026"
-                    Point3="145.380956338377,28.8627464565026" />
-                  <mssgle:LineSegment
-                    End="145.380956338377,42.2254929130053" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="162,42"
+          Id="Package\Data Flow Task\Script Component"
+          TopLeft="310.476195763569,301.333335521175" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\Excel Source"
+          TopLeft="349,102" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
           TopLeft="418.2,143.6">
@@ -2173,10 +2144,40 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Data Flow Task\Script Component"
-          TopLeft="310.476195763569,301.333335521175" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="292.380956338377,235.325492913005">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.295239425192,66.0078426081693"
+              Start="0,0"
+              End="99.295239425192,58.5078426081693">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.0039213040846" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.0039213040846"
+                    Point2="0,33.0039213040846"
+                    Point3="4,33.0039213040846" />
+                  <mssgle:LineSegment
+                    End="95.295239425192,33.0039213040846" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.295239425192,33.0039213040846"
+                    Point2="99.295239425192,33.0039213040846"
+                    Point3="99.295239425192,37.0039213040846" />
+                  <mssgle:LineSegment
+                    End="99.295239425192,58.5078426081693" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Output 0]"
           TopLeft="391.676195763569,342.933335521175">
@@ -2212,31 +2213,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="292.380956338377,235.325492913005">
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="147,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="99.295239425192,66.0078426081693"
+              EndConnector="145.380956338377,49.7254929130053"
               Start="0,0"
-              End="99.295239425192,58.5078426081693">
+              End="145.380956338377,42.2254929130053">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.0039213040846" />
+                    End="0,20.8627464565026" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.0039213040846"
-                    Point2="0,33.0039213040846"
-                    Point3="4,33.0039213040846" />
+                    Point1="0,20.8627464565026"
+                    Point2="0,24.8627464565026"
+                    Point3="4,24.8627464565026" />
                   <mssgle:LineSegment
-                    End="95.295239425192,33.0039213040846" />
+                    End="141.380956338377,24.8627464565026" />
                   <mssgle:CubicBezierSegment
-                    Point1="95.295239425192,33.0039213040846"
-                    Point2="99.295239425192,33.0039213040846"
-                    Point3="99.295239425192,37.0039213040846" />
+                    Point1="141.380956338377,24.8627464565026"
+                    Point2="145.380956338377,24.8627464565026"
+                    Point3="145.380956338377,28.8627464565026" />
                   <mssgle:LineSegment
-                    End="99.295239425192,58.5078426081693" />
+                    End="145.380956338377,42.2254929130053" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

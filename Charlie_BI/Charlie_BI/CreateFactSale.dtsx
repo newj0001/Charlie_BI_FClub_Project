@@ -11,8 +11,8 @@
   DTS:LocaleID="8192"
   DTS:ObjectName="CreateFactSale"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{CAC89656-EDFF-493C-8223-2F09324A2B24}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{915E6670-FB23-4C74-A495-08DC4E65961E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -271,15 +271,6 @@ SELECT * FROM SemesterGroups</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].ExternalColumns[id]"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]"
-                      name="id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[member_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -365,11 +356,6 @@ SELECT * FROM SemesterGroups</property>
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[id]"
-                      dataType="i4"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[id]"
-                      name="id" />
-                    <outputColumn
                       refId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
                       dataType="i4"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Error Output].Columns[member_id]"
@@ -440,12 +426,6 @@ SELECT * FROM SemesterGroups</property>
                   hasSideEffects="true"
                   name="Flat File Destination Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\Extract FClub Data\Flat File Destination.Inputs[Flat File Destination Input].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[id]"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Extract FClub Data\Flat File Destination.Inputs[Flat File Destination Input].Columns[member_id]"
                       cachedDataType="i4"
@@ -645,7 +625,7 @@ where [refTable].[Time30] = ?</property>
                 <output
                   refId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="IgnoreFailure"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Extract FClub Data\Lookup.Inputs[Lookup Input]">
@@ -751,7 +731,7 @@ where [refTable].[MemberID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearStarted" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="MemberKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Semester" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="YearStarted" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -866,7 +846,7 @@ where [refTable].[MemberID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimProduct]) [refTable]
-where [refTable].[MemberID] = ?</property>
+where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -897,7 +877,7 @@ where [refTable].[MemberID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MemberID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GeneralCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpecificCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DeactivatedAtDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsActive" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GeneralCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SpecificCategory" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DeactivatedAtDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -938,7 +918,7 @@ where [refTable].[MemberID] = ?</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">MemberID</property>
+                          name="JoinToReferenceColumn">ProductID</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1012,7 +992,7 @@ where [refTable].[MemberID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimRoom]) [refTable]
-where [refTable].[RoomKey] = ?</property>
+where [refTable].[RoomID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1084,7 +1064,7 @@ where [refTable].[RoomKey] = ?</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">RoomKey</property>
+                          name="JoinToReferenceColumn">RoomID</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1210,12 +1190,6 @@ where [refTable].[RoomKey] = ?</property>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
-                      lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[id]" />
-                    <inputColumn
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[member_id]"
                       cachedDataType="i4"
                       cachedName="member_id"
@@ -1237,14 +1211,8 @@ where [refTable].[RoomKey] = ?</property>
                       refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[price]"
                       cachedDataType="i4"
                       cachedName="price"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       lineageId="Package\Extract FClub Data\Extract FClub_Sale Data.Outputs[OLE DB Source Output].Columns[price]" />
-                    <inputColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TimeKey]"
-                      cachedDataType="i4"
-                      cachedName="TimeKey"
-                      externalMetadataColumnId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
-                      lineageId="Package\Extract FClub Data\Lookup.Outputs[Lookup Match Output].Columns[TimeKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1273,9 +1241,9 @@ where [refTable].[RoomKey] = ?</property>
                       dataType="i4"
                       name="TimeKey" />
                     <externalMetadataColumn
-                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[price]"
+                      refId="Package\Extract FClub Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
                       dataType="i4"
-                      name="price" />
+                      name="Price" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2445,17 +2413,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Id="Package\Extract FClub Data\Lookup product key"
           TopLeft="424.000013623919,303.023535554879" />
         <NodeLayout
-          Size="162,42"
-          Id="Package\Extract FClub Data\Script Component"
-          TopLeft="170.428580751225,239.152946101258" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Extract FClub Data\Lookup Member Key"
-          TopLeft="407.020414604321,213.359666961617" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Extract FClub Data\Lookup room Key"
-          TopLeft="428.714299435519,380.929419589455" />
+          Size="248,42"
+          Id="Package\Extract FClub Data\Transform Timestamp to Timestring"
+          TopLeft="439,521" />
         <NodeLayout
           Size="192,42"
           Id="Package\Extract FClub Data\Extract FClub_Sale Data"
@@ -2464,6 +2424,126 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Size="171,42"
           Id="Package\Extract FClub Data\Flat File Destination"
           TopLeft="156.714294667147,325.929418130895" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract FClub Data\OLE DB Destination"
+          TopLeft="435,784" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Extract FClub Data\Lookup Member Key"
+          TopLeft="407.020414604321,213.359666961617" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Extract FClub Data\Script Component"
+          TopLeft="170.428580751225,239.152946101258" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Extract FClub Data\Lookup room Key"
+          TopLeft="428.714299435519,380.929419589455" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Extract FClub Data\Timestamp to string"
+          TopLeft="427,446" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Extract FClub Data\Convert time to DT_STR"
+          TopLeft="483,590" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Extract FClub Data\Lookup"
+          TopLeft="487,703" />
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Output 0]"
+          TopLeft="251.428580751225,281.152946101258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.21428608407803,44.776472029637"
+              Start="0,0"
+              End="-9.21428608407803,37.276472029637">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.3882360148185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.3882360148185"
+                    Point2="0,22.3882360148185"
+                    Point3="-4,22.3882360148185" />
+                  <mssgle:LineSegment
+                    End="-5.21428608407803,22.3882360148185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.21428608407803,22.3882360148185"
+                    Point2="-9.21428608407803,22.3882360148185"
+                    Point3="-9.21428608407803,26.3882360148185" />
+                  <mssgle:LineSegment
+                    End="-9.21428608407803,37.276472029637" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
+          TopLeft="455.844901962947,182.756305364589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.175512641374,30.603361597028"
+              Start="0,0"
+              End="38.175512641374,23.103361597028">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.301680798514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.301680798514"
+                    Point2="0,15.301680798514"
+                    Point3="4,15.301680798514" />
+                  <mssgle:LineSegment
+                    End="34.175512641374,15.301680798514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.175512641374,15.301680798514"
+                    Point2="38.175512641374,15.301680798514"
+                    Point3="38.175512641374,19.301680798514" />
+                  <mssgle:LineSegment
+                    End="38.175512641374,23.103361597028" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract FClub Data.Paths[Lookup Match Output2]"
+          TopLeft="511.35714971776,422.929419589455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.0705804105449"
+              Start="0,0"
+              End="0,15.5705804105449">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5705804105449" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,1.98060270527245,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Match Output1]"
           TopLeft="509.357156529719,345.023535554879">
@@ -2484,7 +2564,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.39825451728802,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,8.398254517288,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2561,111 +2641,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Output 0]"
-          TopLeft="251.428580751225,281.152946101258">
+          Id="Package\Extract FClub Data.Paths[Derived Column Output]"
+          TopLeft="563,563">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.21428608407803,44.776472029637"
+              EndConnector="17,27"
               Start="0,0"
-              End="-9.21428608407803,37.276472029637">
+              End="17,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.3882360148185" />
+                    End="0,9.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.3882360148185"
-                    Point2="0,22.3882360148185"
-                    Point3="-4,22.3882360148185" />
+                    Point1="0,9.5"
+                    Point2="0,13.5"
+                    Point3="4,13.5" />
                   <mssgle:LineSegment
-                    End="-5.21428608407803,22.3882360148185" />
+                    End="13,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5.21428608407803,22.3882360148185"
-                    Point2="-9.21428608407803,22.3882360148185"
-                    Point3="-9.21428608407803,26.3882360148185" />
+                    Point1="13,13.5"
+                    Point2="17,13.5"
+                    Point3="17,17.5" />
                   <mssgle:LineSegment
-                    End="-9.21428608407803,37.276472029637" />
+                    End="17,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[OLE DB Source Output]"
-          TopLeft="455.844901962947,182.756305364589">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="38.175512641374,30.603361597028"
-              Start="0,0"
-              End="38.175512641374,23.103361597028">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.301680798514" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.301680798514"
-                    Point2="0,15.301680798514"
-                    Point3="4,15.301680798514" />
-                  <mssgle:LineSegment
-                    End="34.175512641374,15.301680798514" />
-                  <mssgle:CubicBezierSegment
-                    Point1="34.175512641374,15.301680798514"
-                    Point2="38.175512641374,15.301680798514"
-                    Point3="38.175512641374,19.301680798514" />
-                  <mssgle:LineSegment
-                    End="38.175512641374,23.103361597028" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract FClub Data\OLE DB Destination"
-          TopLeft="435,784" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Extract FClub Data\Lookup"
-          TopLeft="445,666" />
-        <NodeLayout
-          Size="248,42"
-          Id="Package\Extract FClub Data\Transform Timestamp to Timestring"
-          TopLeft="439,521" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Extract FClub Data\Timestamp to string"
-          TopLeft="427,446" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Lookup Match Output2]"
-          TopLeft="511.35714971776,422.929419589455">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.0705804105449"
-              Start="0,0"
-              End="0,15.5705804105449">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.5705804105449" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,1.98060270527247,96.3827734375,11.609375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2702,70 +2708,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Extract FClub Data\Convert time to DT_STR"
-          TopLeft="430,591" />
-        <EdgeLayout
-          Id="Package\Extract FClub Data.Paths[Derived Column Output]"
-          TopLeft="563,563">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-36,28"
-              Start="0,0"
-              End="-36,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10"
-                    Point2="0,14"
-                    Point3="-4,14" />
-                  <mssgle:LineSegment
-                    End="-32,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-32,14"
-                    Point2="-36,14"
-                    Point3="-36,18" />
-                  <mssgle:LineSegment
-                    End="-36,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Data Conversion Output1]"
-          TopLeft="527,633">
+          TopLeft="580,632">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-25.5,33"
+              EndConnector="-36.5,71"
               Start="0,0"
-              End="-25.5,25.5">
+              End="-36.5,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.5" />
+                    End="0,31.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="-4,16.5" />
+                    Point1="0,31.5"
+                    Point2="0,35.5"
+                    Point3="-4,35.5" />
                   <mssgle:LineSegment
-                    End="-21.5,16.5" />
+                    End="-32.5,35.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-21.5,16.5"
-                    Point2="-25.5,16.5"
-                    Point3="-25.5,20.5" />
+                    Point1="-32.5,35.5"
+                    Point2="-36.5,35.5"
+                    Point3="-36.5,39.5" />
                   <mssgle:LineSegment
-                    End="-25.5,25.5" />
+                    End="-36.5,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2776,37 +2744,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract FClub Data.Paths[Lookup Match Output3]"
-          TopLeft="501.5,708">
+          TopLeft="543.5,745">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19,76"
+              EndConnector="-23,39"
               Start="0,0"
-              End="19,68.5">
+              End="-23,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34" />
+                    End="0,15.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34"
-                    Point2="0,38"
-                    Point3="4,38" />
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="-4,19.5" />
                   <mssgle:LineSegment
-                    End="15,38" />
+                    End="-19,19.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="15,38"
-                    Point2="19,38"
-                    Point3="19,42" />
+                    Point1="-19,19.5"
+                    Point2="-23,19.5"
+                    Point3="-23,23.5" />
                   <mssgle:LineSegment
-                    End="19,68.5" />
+                    End="-23,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-38.69138671875,43,96.3827734375,11.609375"
+              BoundingBox="-59.69138671875,24.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2829,53 +2797,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Lookup Member Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimMember]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract FClub Data\Lookup room Key">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimRoom]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2909,6 +2831,52 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup Member Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimMember]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract FClub Data\Lookup room Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimRoom]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Extract FClub Data\Lookup">
     <Properties>
       <Property>
@@ -2924,7 +2892,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
