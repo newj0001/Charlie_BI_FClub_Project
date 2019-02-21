@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="CreateDimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{18D5725D-0DD6-4EA2-A64A-61BE3C14BEB5}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{82D82CE8-BEF7-4CE3-9035-EE561E056447}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -136,159 +136,100 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Excel Source"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="Excel Source"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">produktkategori$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Data Flow Task\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[active]"
+                      cachedDataType="i2"
+                      cachedName="active"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[price]"
+                      cachedDataType="i4"
+                      cachedName="price"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]"
-                  name="Excel Source Output">
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[dontuse]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[id]"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[dontuse]"
-                      name="dontuse"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[main]"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of active]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[main]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[main]"
-                      name="main"
-                      truncationRowDisposition="FailComponent" />
+                      length="50"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of active]"
+                      name="Copy of active"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub]"
-                      dataType="wstr"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of price]"
+                      dataType="decimal"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[sub]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub]"
-                      name="sub"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub-sub]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[sub-sub]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub-sub]"
-                      name="sub-sub"
-                      truncationRowDisposition="FailComponent" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of price]"
+                      name="Copy of price"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[id]"
-                      dataType="r8"
-                      name="id" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[main]"
-                      dataType="wstr"
-                      length="255"
-                      name="main" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[sub]"
-                      dataType="wstr"
-                      length="255"
-                      name="sub" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[sub-sub]"
-                      dataType="wstr"
-                      length="255"
-                      name="sub-sub" />
-                  </externalMetadataColumns>
+                  <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
                   isErrorOut="true"
-                  name="Excel Source Error Output">
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[id]"
-                      dataType="r8"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[id]"
-                      name="id" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[main]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[main]"
-                      name="main" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[sub]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[sub]"
-                      name="sub" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[sub-sub]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[sub-sub]"
-                      name="sub-sub" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -547,42 +488,18 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[price]"
-                      cachedDataType="i4"
-                      cachedName="price"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[name]"
-                      cachedDataType="nText"
-                      cachedName="name"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[deactivate_date]"
                       cachedDataType="date"
                       cachedName="deactivate_date"
                       externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[DeactivatedAtDate]"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]" />
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[deactivate_date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Specific]"
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Copy of active]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Specific"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[SpecificCategory]"
-                      lineageId="Package\Data Flow Task\Script Component.Outputs[Output 0].Columns[Specific]" />
+                      cachedName="Copy of active"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of active]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Middle]"
                       cachedDataType="wstr"
@@ -591,26 +508,50 @@
                       externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MiddleCategory]"
                       lineageId="Package\Data Flow Task\Script Component.Outputs[Output 0].Columns[Middle]" />
                     <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Specific]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Specific"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[SpecificCategory]"
+                      lineageId="Package\Data Flow Task\Script Component.Outputs[Output 0].Columns[Specific]" />
+                    <inputColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Main]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Main"
-                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[GeneralCategory]"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MainCategory]"
                       lineageId="Package\Data Flow Task\Script Component.Outputs[Output 0].Columns[Main]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[Copy of price]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of price"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedDataType="nText"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[GeneralCategory]"
-                      dataType="nText"
-                      name="GeneralCategory" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MiddleCategory]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="50"
                       name="MiddleCategory" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[SpecificCategory]"
-                      dataType="nText"
+                      dataType="wstr"
+                      length="50"
                       name="SpecificCategory" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
@@ -618,7 +559,8 @@
                       name="ProductKey" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
-                      dataType="i2"
+                      dataType="wstr"
+                      length="50"
                       name="IsActive" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
@@ -626,12 +568,19 @@
                       name="Name" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
-                      dataType="i4"
-                      name="Price" />
+                      dataType="numeric"
+                      name="Price"
+                      precision="28"
+                      scale="2" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[DeactivatedAtDate]"
                       dataType="dbTimeStamp"
                       name="DeactivatedAtDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[MainCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="MainCategory" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="i4"
@@ -819,8 +768,26 @@ public class ScriptMain : UserComponent
     /// <param name="Row">The row that is currently passing through the component</param>
     public override void Input0_ProcessInputRow(Input0Buffer Row)
     {
+        if (Row.id_IsNull)
+        {
+            ComponentMetaData.RemoveInvalidInputColumns();
+
+        }        
         if (!Row.id_IsNull)
         {
+            Row.Copyofprice /= 100;
+            if (Row.active == "0")
+            {
+                Row.active = "Nej";
+            }
+            if (Row.active == "1")
+            {
+                Row.active = "Ja";
+            }
+            if(Row.deactivatedate_IsNull)
+            {
+                Row.deactivatedate = new DateTime(DateTime.MaxValue.Ticks);
+            }
             //Event
             if (Row.id == 46 || Row.id == 48 || Row.id == 50 || Row.id == 51 || Row.id == 55 || Row.id == 56)
             {
@@ -846,28 +813,28 @@ public class ScriptMain : UserComponent
             if (Row.id == 58)
             {
                 Row.Main = Main[1];
-                Row.Middle = Sub[0];
+                Row.Middle = Sub[1];
                 Row.Specific = Subsub[3];
             }
             //chips
             if (Row.id == 26 || Row.id == 27 || Row.id == 28)
             {
                 Row.Main = Main[1];
-                Row.Middle = Sub[0];
+                Row.Middle = Sub[1];
                 Row.Specific = Subsub[4];
             }
             //Food, Dairy
             if (Row.id == 52 || Row.id == 24)
             {
                 Row.Main = Main[1];
-                Row.Middle = Sub[0];
+                Row.Middle = Sub[1];
                 Row.Specific = Subsub[5];
             }
             //drinks
             if (Row.id == 12 || Row.id == 63 || Row.id == 11 || Row.id == 38 || Row.id == 37 || Row.id == 34)
             {
                 Row.Main = Main[1];
-                Row.Middle = Sub[1];
+                Row.Middle = Sub[2];
                 Row.Specific = Subsub[6];
             }
             //energy drinks
@@ -1165,14 +1132,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public Int16 active
+    public BlobColumn name
     {
         get
         {
-            return Buffer.GetInt16(BufferColumnIndexes[1]);
+            return (BlobColumn)Buffer[BufferColumnIndexes[1]];
         }
     }
-    public bool active_IsNull
+    public bool name_IsNull
     {
         get
         {
@@ -1180,48 +1147,93 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public BlobColumn name
-    {
-        get
-        {
-            return (BlobColumn)Buffer[BufferColumnIndexes[2]];
-        }
-    }
-    public bool name_IsNull
-    {
-        get
-        {
-            return IsNull(2);
-        }
-    }
-
-    public Int32 price
-    {
-        get
-        {
-            return Buffer.GetInt32(BufferColumnIndexes[3]);
-        }
-    }
-    public bool price_IsNull
-    {
-        get
-        {
-            return IsNull(3);
-        }
-    }
-
     public DateTime deactivatedate
     {
         get
         {
-            return Buffer.GetDateTime(BufferColumnIndexes[4]);
+            return Buffer.GetDateTime(BufferColumnIndexes[2]);
+        }
+        set
+        {
+            this[2] = value;
         }
     }
     public bool deactivatedate_IsNull
     {
         get
         {
+            return IsNull(2);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String active
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[3]);
+        }
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool active_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal Copyofprice
+    {
+        get
+        {
+            return Buffer.GetDecimal(BufferColumnIndexes[4]);
+        }
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool Copyofprice_IsNull
+    {
+        get
+        {
             return IsNull(4);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
         }
     }
 
@@ -1419,7 +1431,7 @@ public class Variables
     <msb:CodeName>SC_897444ccb6424db995136519169d7eee</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_897444ccb6424db995136519169d7eee</msb:DisplayName>
-    <msb:ProjectId>{1C7E3B57-4597-453C-95FF-B9C3E93511E2}</msb:ProjectId>
+    <msb:ProjectId>{534321C6-6E5D-4FB1-BF0D-2524143F79C1}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_897444ccb6424db995136519169d7eee.csproj" />
@@ -1566,175 +1578,184 @@ namespace SC_897444ccb6424db995136519169d7eee.Properties {
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGLxa1wAAAAAAAAAAOAAIiALATAAAB4AAAAIAAAAAAAARjwA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDABhhblwAAAAAAAAAAOAAIiALATAAACAAAAAIAAAAAAAAyj8A
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAPQ7AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAHg/AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAATBwAAAAgAAAAHgAAAAIA
-AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAgAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAJgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAo
-PAAAAAAAAEgAAAACAAUAXCgAAOASAAABAAAAAAAAADw7AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA0B8AAAAgAAAAIAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAiAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAKAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACs
+PwAAAAAAAEgAAAACAAUAUCkAAHAVAAABAAAAAAAAAMA+AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAgAXAQAAAAAAAAJ7AQAABHIBAABwbxAAAAoCewEAAARy
 EwAAcG8QAAAKAnsCAAAEcgEAAHBvEAAACgJ7AgAABHIdAABwbxAAAAoCewIAAARyKQAAcG8QAAAK
 AnsCAAAEckEAAHBvEAAACgJ7AwAABHJfAABwbxAAAAoCewMAAARyawAAcG8QAAAKAnsDAAAEcoUA
 AHBvEAAACgJ7AwAABHKhAABwbxAAAAoCewMAAARyrQAAcG8QAAAKAnsDAAAEcrkAAHBvEAAACgJ7
 AwAABHLFAABwbxAAAAoCewMAAARy0wAAcG8QAAAKAnsDAAAEcu8AAHBvEAAACgJ7AwAABHL5AABw
-bxAAAAoCewMAAARyBwEAcG8QAAAKAigRAAAKKh4CKBIAAAoqABMwAwC8BAAAAAAAAANvBwAABjqw
-BAAAA28GAAAGHy4uMgNvBgAABh8wLigDbwYAAAYfMi4eA28GAAAGHzMuFANvBgAABh83LgoDbwYA
-AAYfODM2AwJ7AQAABBZvEwAACm8UAAAGAwJ7AgAABBZvEwAACm8SAAAGAwJ7AwAABBZvEwAACm8Q
-AAAGA28GAAAGHzEuCgNvBgAABh88MzYDAnsBAAAEFm8TAAAKbxQAAAYDAnsCAAAEFm8TAAAKbxIA
-AAYDAnsDAAAEF28TAAAKbxAAAAYDbwYAAAYfIS48A28GAAAGHyguMgNvBgAABh87LigDbwYAAAYf
-PS4eA28GAAAGHzkuFANvBgAABh8+LgoDbwYAAAYfHzM2AwJ7AQAABBZvEwAACm8UAAAGAwJ7AgAA
-BBZvEwAACm8SAAAGAwJ7AwAABBhvEwAACm8QAAAGA28GAAAGHzozNgMCewEAAAQXbxMAAApvFAAA
-BgMCewIAAAQWbxMAAApvEgAABgMCewMAAAQZbxMAAApvEAAABgNvBgAABh8aLhQDbwYAAAYfGy4K
-A28GAAAGHxwzNgMCewEAAAQXbxMAAApvFAAABgMCewIAAAQWbxMAAApvEgAABgMCewMAAAQabxMA
-AApvEAAABgNvBgAABh80LgoDbwYAAAYfGDM2AwJ7AQAABBdvEwAACm8UAAAGAwJ7AgAABBZvEwAA
-Cm8SAAAGAwJ7AwAABBtvEwAACm8QAAAGA28GAAAGHwwuMgNvBgAABh8/LigDbwYAAAYfCy4eA28G
-AAAGHyYuFANvBgAABh8lLgoDbwYAAAYfIjM2AwJ7AQAABBdvEwAACm8UAAAGAwJ7AgAABBdvEwAA
-Cm8SAAAGAwJ7AwAABBxvEwAACm8QAAAGA28GAAAGHx4uKANvBgAABh8gLh4DbwYAAAYfIy4UA28G
-AAAGHyQuCgNvBgAABh8nMzYDAnsBAAAEF28TAAAKbxQAAAYDAnsCAAAEGG8TAAAKbxIAAAYDAnsD
-AAAEHW8TAAAKbxAAAAYDbwYAAAYfCjFkA28GAAAGHxEuWgNvBgAABh8QLlADbwYAAAYfEi5GA28G
-AAAGHxMuPANvBgAABh8ULjIDbwYAAAYfFS4oA28GAAAGHxkuHgNvBgAABh8rLhQDbwYAAAYfLC4K
-A28GAAAGHy0zNgMCewEAAAQXbxMAAApvFAAABgMCewIAAAQYbxMAAApvEgAABgMCewMAAAQbbxMA
-AApvEAAABgNvBgAABh8WLhQDbwYAAAYfFy4KA28GAAAGH0AzNgMCewEAAAQXbxMAAApvFAAABgMC
-ewIAAAQZbxMAAApvEgAABgMCewMAAAQebxMAAApvEAAABgNvBgAABh8pLgoDbwYAAAYfNTM3AwJ7
-AQAABBdvEwAACm8UAAAGAwJ7AgAABBlvEwAACm8SAAAGAwJ7AwAABB8JbxMAAApvEAAABgNvBgAA
-Bh8NLjwDbwYAAAYfDi4yA28GAAAGHx0uKANvBgAABh8qLh4DbwYAAAYfLy4UA28GAAAGHzYuCgNv
-BgAABh8PMzcDAnsBAAAEF28TAAAKbxQAAAYDAnsCAAAEGW8TAAAKbxIAAAYDAnsDAAAEHwpvEwAA
-Cm8QAAAGKqICcxQAAAp9AQAABAJzFAAACn0CAAAEAnMUAAAKfQMAAAQCKBgAAAYqKgIDBAUoFQAA
-CipSAnsWAAAKAnsXAAAKFpRvGAAACioiAhYoGQAACipSAnsWAAAKAnsXAAAKF5RvGgAACioiAhco
-GQAACipmAnsWAAAKAnsXAAAKGJRvGwAACnQSAAABKiICGCgZAAAKKlICexYAAAoCexcAAAoZlG8Y
-AAAKKiICGSgZAAAKKlICexYAAAoCexcAAAoalG8cAAAKKiICGigZAAAKKiYCGwMoHQAACipaAywI
-AhsoHgAACipyEQEAcHMfAAAKeiYCHAMoHQAACipaAywIAhwoHgAACipyEQEAcHMfAAAKeiYCHQMo
-HQAACipaAywIAh0oHgAACipyEQEAcHMfAAAKeh4CKCAAAAoqHgIoIQAACip+AigiAAAKAgJzHAAA
-Bn0EAAAEAgJzHQAABn0FAAAEKpIEcq4BAHAabyMAAAosFQIFAgMoJAAACg4EcwUAAAZvGgAABipK
-KwcCA28bAAAGA28WAAAGLfEqBio6AiglAAAKAgN9BgAABCo6AiglAAAKAgN9BwAABCoeAiglAAAK
-Kq5+CAAABC0ecr4BAHDQBwAAAigmAAAKbycAAApzKAAACoAIAAAEfggAAAQqGn4JAAAEKh4CgAkA
-AAQqGn4KAAAEKh4CKCkAAAoqLnMjAAAGgAoAAAQqQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkA
-AAAABQBsAAAABAcAACN+AABwBwAAQAcAACNTdHJpbmdzAAAAALAOAAAwAgAAI1VTAOAQAAAQAAAA
-I0dVSUQAAADwEAAA8AEAACNCbG9iAAAAAAAAAAIAAAFXFaAJCQEAAAD6ATMAFgAAAQAAACIAAAAI
-AAAACgAAACQAAAATAAAAKQAAABAAAAADAAAAEwAAABQAAAABAAAAAQAAAAQAAAABAAAAAACJAwEA
-AAAAAAYAeAJ2BQYADAN2BQYAxAFjBQ8A6gUAAAYA8QG4BAYAWwK4BAYAPAK4BAYA8wK4BAYAmAK4
-BAYAsQK4BAYACAK4BAYAIwJSAwoAzAL+AAYAAQBMAAoANQX+AA4AJgX+AAoAAQX+AA4AgwT+AAYA
-9QBcBAoAsAb+AAYAcwZcBAYApwFjBQYARgWWBQYA9QSjBBIAdwFzAxIA2AFzAxIATAGOBAYAjAF2
-BQYAygRcBAYAbANcBAYA5ARcBAYAHwFcBAYAuwBcBAYANQe4BAAAAAAaAAAAAAABAAEAAQAQAHgE
-AAAQAAEAAQABABAAGQUAAD0ABAAFAAEAEACSBgAAUQAEABgAAQAQAGcGAABVAAYAHAABABAAKAYA
-AFUABwAdAAAAEACdBfkFVQAIAB4AAAEQAFcG+QVtAAoAIgAGAH4EmQAGADQAmQAGADgAmQAGAGcG
-oAAGACgGpAABAKAGqAABAKAGqAARAGMErAARADwBsAARAHwAtABQIAAAAADGACoDBgABAHMhAAAA
-AMYANQMGAAEAfCEAAAAAxgASB7gAAQBEJgAAAACGGFYFBgACAG0mAAAAAIYYVgUtAAIAeCYAAAAA
-hghrAL4ABQCNJgAAAACGCMUDXwAFAJYmAAAAAIYIRwPCAAUAqyYAAAAAhgggBF8ABQC0JgAAAACG
-COkAxgAFAM4mAAAAAIYI9gNfAAUA1yYAAAAAhghyAL4ABQDsJgAAAACGCNMDXwAFAPUmAAAAAIYI
-ZAHLAAUACicAAAAAhggGBF8ABQATJwAAAACGCD8AEAAFAB0nAAAAAIYIsQPQAAYANCcAAAAAhgiw
-ABAABwA+JwAAAACGCOQD0AAIAFUnAAAAAIYIbwQQAAkAXycAAAAAhggyBNAACgB2JwAAAACGACkH
-XwALAH4nAAAAAIYAegZfAAsAhicAAAAAhhhWBQYACwCmJwAAAADGAAUH1QALAMsnAAAAAMYB/ga4
-AA8A3icAAAAAxgESB7gAEADgJwAAAACGGFYF3wARAO8nAAAAAIYYVgXfABIA/icAAAAAgxhWBQYA
-EwAGKAAAAACTCEIF5QATADIoAAAAAJMIJAHqABMAOSgAAAAAkwgwAe8AEwBBKAAAAACWCIYG9QAU
-AEgoAAAAAIYYVgUGABQAUCgAAAAAkRhcBfoAFAAAAAEALQcAAAEAOwUAAAIAMgYAAAMADwUAAAEA
-QQMAAAEAQQMAAAEAQQMAAAEAQQMAAAEAQQMAAAEAQQMAAAEAIwAAAAIA3wAAAAMAOwUAAAQADwUA
-AAEAOwUAAAEALQcAAAEAtgYAAAEAtgYAAAEAQQMJAFYFAQARAFYFBgAZAFYFCgApAFYFEAAxAFYF
-EAA5AFYFEABBAFYFEABJAFYFEABRAFYFEABZAFYFEABhAFYFEABpAFYFBgCxAFYFBgDRAFYFFQDh
-AFYFBgAMAGcAIQChACoDBgChADUDBgAMAEoEJwAMAFYFBgB5AFYFLQB5ADsFNwB5ADIGOwCBAAgA
-PwB5ADsERACBABEASQCBAEoETgCBAPIAUwB5AFMEWQB5AEIEAQDpAFYFEAB5ACkHXwB5AHoGXwCh
-AFYFBgDxAGAGYwChAEYGagCpAFYFBgABAc0AcAABATEHeQC5AFYFfwDZAFYFBgAuAAsAJwEuABMA
-MAEuABsATwEuACMAWAEuACsAgQEuADMAgQEuADsAgQEuAEMAWAEuAEsAhwEuAFMAgQEuAFsAngFD
-AGMA6AHjAGsA6AFBAXsA6AEpAnMATwFJAnMATwEDAAEABwARAAgAEwAAAG8A/gAAAMkDAgEAAEsD
-BgEAACQEAgEAAO0ACgEAAPoDAgEAAHYA/gAAANcDAgEAAGgBDwEAAAoEAgEAAEMAFAEAALUDAgEA
-ALQAFAEAAOgDAgEAAH4EFAEAADYEAgEAAEYFGAEAAEQBHQEAAIoGIgECAAYAAwACAAcABQACAAgA
-BwACAAkACQACAAoACwACAAsADQACAAwADwACAA0AEQACAA4AEwACAA8AFQABABAAFwABABEAGQAB
-ABIAGwABABMAHQABABQAHwABABUAIQACAB8AIwACACAAJQABACEAJQACACIAJwAbAASAAAABAAAA
-AAAAAAAAAAAAAIwAAAAEAAAAAAAAAAAAAACHACsAAAAAAA4AAAAAAAAAAAAAAJAAwAYAAAAADgAA
-AAAAAAAAAAAAkADdBgAAAAAEAAAAAAAAAAAAAACHAFwEAAAAAAAAAAABAAAApwUAAAAAAAAATGlz
-dGAxAEdldEludDMyAEdldEludDE2ADxNb2R1bGU+AElucHV0SUQAbXNjb3JsaWIAU3ViAFN1YnN1
-YgBzZXRfU3BlY2lmaWMAU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMAQWRkAGdldF9pZABnZXRf
-cHJpY2UAZGVmYXVsdEluc3RhbmNlAFNDXzg5NzQ0NGNjYjY0MjRkYjk5NTEzNjUxOTE2OWQ3ZWVl
-AHNldF9NaWRkbGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1l
-AGdldF9uYW1lAEdldERhdGVUaW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5
-cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0
-dGluZ3NCYXNlAGdldF9kZWFjdGl2YXRlZGF0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxl
-ckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2Fi
-bGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1
-dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFz
-c2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRl
-AENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRl
-AEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50
-QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0
-dHJpYnV0ZQBQcmVFeGVjdXRlAFBvc3RFeGVjdXRlAHZhbHVlAGdldF9hY3RpdmUAU3lzdGVtLlJ1
-bnRpbWUuVmVyc2lvbmluZwBTdHJpbmcAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzg5NzQ0NGNj
-YjY0MjRkYjk5NTEzNjUxOTE2OWQ3ZWVlLmRsbABzZXRfU3BlY2lmaWNfSXNOdWxsAGdldF9pZF9J
-c051bGwAZ2V0X3ByaWNlX0lzTnVsbABzZXRfTWlkZGxlX0lzTnVsbABnZXRfbmFtZV9Jc051bGwA
-Z2V0X2RlYWN0aXZhdGVkYXRlX0lzTnVsbABnZXRfYWN0aXZlX0lzTnVsbABzZXRfTWFpbl9Jc051
-bGwAU2V0TnVsbABnZXRfSXRlbQBzZXRfSXRlbQBTeXN0ZW0AcmVzb3VyY2VNYW4Ac2V0X01haW4A
-U2NyaXB0TWFpbgBCbG9iQ29sdW1uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxp
-emF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5n
-Q29tcGFyaXNvbgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABJbnB1dDBCdWZm
-ZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIALmN0b3IA
-LmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2Vz
-AFN5c3RlbS5SZXNvdXJjZXMAU0NfODk3NDQ0Y2NiNjQyNGRiOTk1MTM2NTE5MTY5ZDdlZWUuUHJv
-cGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDXzg5NzQ0NGNjYjY0
-MjRkYjk5NTEzNjUxOTE2OWQ3ZWVlLlByb3BlcnRpZXMAVmFyaWFibGVzAEJ1ZmZlckNvbHVtbklu
-ZGV4ZXMAR2V0Q29sdW1uSW5kZXhlcwBTZXR0aW5ncwBFcXVhbHMAQ29ubmVjdGlvbnMAT2JqZWN0
-AEVuZE9mUm93c2V0AGdldF9EZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNj
-cmlwdENvbXBvbmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jvc29mdC5TcWxT
-ZXJ2ZXIuUGlwZWxpbmVIb3N0AElucHV0MF9Qcm9jZXNzSW5wdXQASW5wdXQwX1Byb2Nlc3NJbnB1
-dFJvdwBOZXh0Um93AGdldF9Bc3NlbWJseQAAAAARTgBvAG4AIABGAG8AbwBkAAAJRgBvAG8AZAAA
-C1MAbgBhAGMAawAAF1MAbwBmAHQAIABEAHIAaQBuAGsAcwAAHUEAbABjAG8AaABvAGwAIABEAHIA
-aQBuAGsAcwAAC0UAdgBlAG4AdAAAGVMAdQBiAHMAYwByAGkAcAB0AGkAbwBuAAAbTQBpAHMAYwBl
-AGwAbABhAG4AZQBvAHUAcwAAC0MAYQBuAGQAeQAAC0MAaABpAHAAcwAAC0QAYQBpAHIAeQAADUQA
-cgBpAG4AawBzAAAbRQBuAGUAcgBnAHkAIABEAHIAaQBuAGsAcwAACVcAaQBuAGUAAA1MAGkAcQB1
-AG8AcgAACUIAZQBlAHIAAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBu
-AG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEA
-IAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAu
-AAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADgAOQA3ADQANAA0AGMAYwBiADYANAAyADQAZABiADkA
-OQA1ADEAMwA2ADUAMQA5ADEANgA5AGQANwBlAGUAZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBS
-AGUAcwBvAHUAcgBjAGUAcwAAusgn7qGwekS+BwxihSe0vQAEIAEBCAMgAAEFIAEBEREEIAEBDgUg
-AQERZQUVEjkBDgUgAQETAAUgARMACAkgAwESQR0IEkUDBhJBAwYdCAQgAQgIBCABAggEIAEGCAQg
-ARwIBSABEU0IBSACAQgcAyAAAgYgAgIOEX0FIAEdCAgIAAESgIERgIUFIAASgIkHIAIBDhKAiQi3
-elxWGTTgiQiJhF3NgIDMkQYGFRI5AQ4DBhIUAwYSGAMGElEDBhJdAwYSYQMGEiAFIAEBEgwDIAAI
-AyAABgQgABJJBCAAEU0EIAEBAgkgBAEIDhJBEkUFIAEBElEEAAASXQQAABJhBQABARJhBAAAEiAD
-AAABAygACAMoAAIDKAAGBCgAEkkEKAARTQMoAA4ECAASXQQIABJhBAgAEiAIAQAIAAAAAAAeAQAB
-AFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzg5NzQ0NGNjYjY0MjRk
-Yjk5NTEzNjUxOTE2OWQ3ZWVlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTkAAEkBABouTkVU
-RnJhbWV3b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFt
-ZXdvcmsgNC41BAEAAAAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3Vy
-Y2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVi
-bGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNv
-dXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAHDwAAAAAAAAAAAAANjwAAAAgAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAACg8AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8l
-ACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+bxAAAAoCewMAAARyBwEAcG8QAAAKAigRAAAKKh4CKBIAAAoqABMwAwBBBQAAAQAAEQNvBwAABiwL
+AigTAAAKbxQAAAoDbwcAAAY6IgUAAAMlbxIAAAYfZHMVAAAKKBYAAApvEwAABgNvDgAABnIRAQBw
+KBcAAAosCwNyFQEAcG8PAAAGA28OAAAGch0BAHAoFwAACiwLA3IhAQBwbw8AAAYDbwwAAAYsGAN+
+GAAACgoSACgZAAAKcxoAAApvCwAABgNvBgAABh8uLjIDbwYAAAYfMC4oA28GAAAGHzIuHgNvBgAA
+Bh8zLhQDbwYAAAYfNy4KA28GAAAGHzgzNgMCewEAAAQWbxsAAApvGgAABgMCewIAAAQWbxsAAApv
+GAAABgMCewMAAAQWbxsAAApvFgAABgNvBgAABh8xLgoDbwYAAAYfPDM2AwJ7AQAABBZvGwAACm8a
+AAAGAwJ7AgAABBZvGwAACm8YAAAGAwJ7AwAABBdvGwAACm8WAAAGA28GAAAGHyEuPANvBgAABh8o
+LjIDbwYAAAYfOy4oA28GAAAGHz0uHgNvBgAABh85LhQDbwYAAAYfPi4KA28GAAAGHx8zNgMCewEA
+AAQWbxsAAApvGgAABgMCewIAAAQWbxsAAApvGAAABgMCewMAAAQYbxsAAApvFgAABgNvBgAABh86
+MzYDAnsBAAAEF28bAAAKbxoAAAYDAnsCAAAEF28bAAAKbxgAAAYDAnsDAAAEGW8bAAAKbxYAAAYD
+bwYAAAYfGi4UA28GAAAGHxsuCgNvBgAABh8cMzYDAnsBAAAEF28bAAAKbxoAAAYDAnsCAAAEF28b
+AAAKbxgAAAYDAnsDAAAEGm8bAAAKbxYAAAYDbwYAAAYfNC4KA28GAAAGHxgzNgMCewEAAAQXbxsA
+AApvGgAABgMCewIAAAQXbxsAAApvGAAABgMCewMAAAQbbxsAAApvFgAABgNvBgAABh8MLjIDbwYA
+AAYfPy4oA28GAAAGHwsuHgNvBgAABh8mLhQDbwYAAAYfJS4KA28GAAAGHyIzNgMCewEAAAQXbxsA
+AApvGgAABgMCewIAAAQYbxsAAApvGAAABgMCewMAAAQcbxsAAApvFgAABgNvBgAABh8eLigDbwYA
+AAYfIC4eA28GAAAGHyMuFANvBgAABh8kLgoDbwYAAAYfJzM2AwJ7AQAABBdvGwAACm8aAAAGAwJ7
+AgAABBhvGwAACm8YAAAGAwJ7AwAABB1vGwAACm8WAAAGA28GAAAGHwoxZANvBgAABh8RLloDbwYA
+AAYfEC5QA28GAAAGHxIuRgNvBgAABh8TLjwDbwYAAAYfFC4yA28GAAAGHxUuKANvBgAABh8ZLh4D
+bwYAAAYfKy4UA28GAAAGHywuCgNvBgAABh8tMzYDAnsBAAAEF28bAAAKbxoAAAYDAnsCAAAEGG8b
+AAAKbxgAAAYDAnsDAAAEG28bAAAKbxYAAAYDbwYAAAYfFi4UA28GAAAGHxcuCgNvBgAABh9AMzYD
+AnsBAAAEF28bAAAKbxoAAAYDAnsCAAAEGW8bAAAKbxgAAAYDAnsDAAAEHm8bAAAKbxYAAAYDbwYA
+AAYfKS4KA28GAAAGHzUzNwMCewEAAAQXbxsAAApvGgAABgMCewIAAAQZbxsAAApvGAAABgMCewMA
+AAQfCW8bAAAKbxYAAAYDbwYAAAYfDS48A28GAAAGHw4uMgNvBgAABh8dLigDbwYAAAYfKi4eA28G
+AAAGHy8uFANvBgAABh82LgoDbwYAAAYfDzM3AwJ7AQAABBdvGwAACm8aAAAGAwJ7AgAABBlvGwAA
+Cm8YAAAGAwJ7AwAABB8KbxsAAApvFgAABiqiAnMcAAAKfQEAAAQCcxwAAAp9AgAABAJzHAAACn0D
+AAAEAigeAAAGKioCAwQFKB0AAAoqUgJ7HgAACgJ7HwAAChaUbyAAAAoqIgIWKCEAAAoqZgJ7HgAA
+CgJ7HwAACheUbyIAAAp0EwAAASoiAhcoIQAACipSAnseAAAKAnsfAAAKGJRvIwAACio6AhgDjA8A
+AAEoJAAACioiAhgoIQAACipaAywIAhgoJQAACipyJwEAcHMmAAAKelICex4AAAoCex8AAAoZlG8n
+AAAKKiYCGQMoJAAACioiAhkoIQAACipaAywIAhkoJQAACipyJwEAcHMmAAAKelICex4AAAoCex8A
+AAoalG8oAAAKKjoCGgOMFAAAASgkAAAKKiICGighAAAKKloDLAgCGiglAAAKKnInAQBwcyYAAAp6
+JgIbAygkAAAKKloDLAgCGyglAAAKKnInAQBwcyYAAAp6JgIcAygkAAAKKloDLAgCHCglAAAKKnIn
+AQBwcyYAAAp6JgIdAygkAAAKKloDLAgCHSglAAAKKnInAQBwcyYAAAp6HgIoKQAACioeAigqAAAK
+Kn4CKCsAAAoCAnMiAAAGfQQAAAQCAnMjAAAGfQUAAAQqkgRyxAEAcBpvLAAACiwVAgUCAygtAAAK
+DgRzBQAABm8gAAAGKkorBwIDbyEAAAYDbxwAAAYt8SoGKjoCKC4AAAoCA30GAAAEKjoCKC4AAAoC
+A30HAAAEKh4CKC4AAAoqrn4IAAAELR5y1AEAcNAHAAACKC8AAApvMAAACnMxAAAKgAgAAAR+CAAA
+BCoafgkAAAQqHgKACQAABCoafgoAAAQqHgIoMgAACioucykAAAaACgAABCoAAEJTSkIBAAEAAAAA
+AAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAPwHAAAjfgAAaAgAAIQIAAAjU3RyaW5ncwAAAADsEAAA
+SAIAACNVUwA0EwAAEAAAACNHVUlEAAAARBMAACwCAAAjQmxvYgAAAAAAAAACAAABVxWiCQkBAAAA
++gEzABYAAAEAAAAkAAAACAAAAAoAAAAqAAAAGQAAADIAAAAQAAAAAQAAAAMAAAATAAAAGgAAAAEA
+AAABAAAABQAAAAEAAAAAAPoDAQAAAAAABgDHAokGBgBbA4kGBgATAnYGDwD9BgAABgBAAn4FBgCq
+An4FBgCLAn4FBgBCA34FBgDnAn4FBgAAA34FBgBXAn4FBgByArUDCgAbAzoBBgAaAHIABgAxARYF
+CgAfBjoBDgAQBjoBCgDHBToBDgA9BToBBgDcAxYFCgDnBzoBBgCqBxYFBgD2AXYGBgAwBqkGBgC7
+BWkFEgDGAeQDEgAnAuQDEgCIAVQFBgDbAYkGFgABAEAGBgDSAxYFBgCQBRYFBgCqBRYFBgBbARYF
+BgD3ABYFBgBsCH4FAAAAACoAAAAAAAEAAQABABAAMgUAABAAAQABAAEAEAADBgAAQQAEAAUAAQAQ
+AMkHAABVAAQAHgABABAAngcAAFkABgAiAAEAEAA7BwAAWQAHACMAAAAQALAGDAdZAAgAJAAAARAA
+agcMB3EACgAoAAYAOAXGAAYAWgDGAAYAXgDGAAYAngfNAAYAOwfRAAEA1wfVAAEA1wfVABEAHQXZ
+ABEAeAHdABEAuADhAFAgAAAAAMYAeQMGAAEAcyEAAAAAxgCEAwYAAQB8IQAAAADGAEkI5QABAMkm
+AAAAAIYYaQYGAAIA8iYAAAAAhhhpBlMAAgD9JgAAAACGCJEA6wAFABInAAAAAIYINgSLAAUAGycA
+AAAAhgglAe8ABQA1JwAAAACGCIQEiwAFAD4nAAAAAIYIoAH0AAUAUycAAAAAhgizAfkABQBiJwAA
+AACGCJQEiwAGAGsnAAAAAIYIrgT/AAYAgicAAAAAhgifAwQBBwCXJwAAAACGCKoDEAAHAKEnAAAA
+AIYIyASLAAgAqicAAAAAhgjaBP8ACADBJwAAAACGCJgACAEJANYnAAAAAIYIqAANAQkA5ScAAAAA
+hghEBIsACgDuJwAAAACGCFsE/wAKAAUoAAAAAIYIZQAQAAsADygAAAAAhggiBP8ADAAmKAAAAACG
+COwAEAANADAoAAAAAIYIcgT/AA4ARygAAAAAhggpBRAADwBRKAAAAACGCOwE/wAQAGgoAAAAAIYA
+YAiLABEAcCgAAAAAhgCxB4sAEQB4KAAAAACGGGkGBgARAJgoAAAAAMYAPAgTAREAvSgAAAAAxgE1
+COUAFQDQKAAAAADGAUkI5QAWANIoAAAAAIYYaQYdARcA4SgAAAAAhhhpBh0BGADwKAAAAACDGGkG
+BgAZAPgoAAAAAJMILAYjARkAJCkAAAAAkwhgASgBGQArKQAAAACTCGwBLQEZADMpAAAAAJYIvQcz
+ARoAOikAAAAAhhhpBgYAGgBCKQAAAACRGG8GOAEaAAAAAQBkCAAAAQAlBgAAAgBFBwAAAwDVBQAA
+AQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZAwAAAQCZ
+AwAAAQCZAwAAAQCZAwAAAQAzAAAAAgAbAQAAAwAlBgAABADVBQAAAQAlBgAAAQBkCAAAAQDtBwAA
+AQDtBwAAAQCZAwkAaQYBABEAaQYGABkAaQYKACkAaQYQADEAaQYQADkAaQYQAEEAaQYQAEkAaQYQ
+AFEAaQYQAFkAaQYQAGEAaQYQAGkAaQYGALkAaQYGANkAaQYVAOkAaQYGAAwAjQAhAKkAeQMGAKkA
+hAMGAKkAOwAsAPEAhAcGAKEAaQYBAKEASAUxAPkAdQg6AHkAkANAAHkAcwdEAHkAaQZIAAwABAVN
+AAwAaQYGAIEAaQZTAIEAJQZdAIEARQdhAIkAIQBlAIEA9QRqAIkABAVvAIkALgF0AIEADQV6AIEA
+/AQBAAEBaQYQAIkAzwOAAIkA2QOFAIEAYAiLAIEAsQeLAKkAaQYGAPkAfQePAKkAWQeXALEAaQYG
+ABEBCQGdABEBaAimAMEAaQasAOEAaQYGAC4ACwBmAS4AEwBvAS4AGwCOAS4AIwCXAS4AKwDAAS4A
+MwDAAS4AOwDAAS4AQwCXAS4ASwDGAS4AUwDAAS4AWwDdAUMAYwAnAuMAawAnAkEBewAnAikCcwCO
+AUkCcwCOAScAAwABAAcAEQAIABMAAACVADwBAAA6BEABAAApAUQBAACIBEABAAC3AUkBAACyBEAB
+AACuA04BAADeBEABAACsAFIBAABfBEABAABpAE4BAAAmBEABAADwAE4BAAB2BEABAAA4BU4BAADw
+BEABAAAwBlcBAACAAVwBAADBB2EBAgAGAAMAAgAHAAUAAgAIAAcAAgAJAAkAAgAKAAsAAQALAAsA
+AgAMAA0AAQANAA0AAgAOAA8AAQAPAA8AAgAQABEAAQARABEAAgASABMAAQATABMAAgAUABUAAQAV
+ABUAAQAWABcAAQAXABkAAQAYABsAAQAZAB0AAQAaAB8AAQAbACEAAgAlACMAAgAmACUAAQAnACUA
+AgAoACcAGwAEgAAAAQAAAAAAAAAAAAAAAADIAAAABAAAAAAAAAAAAAAAtABRAAAAAAAOAAAAAAAA
+AAAAAAC9APcHAAAAAA4AAAAAAAAAAAAAAL0AFAgAAAAABAAAAAAAAAAAAAAAtAAWBQAAAAAOAAAA
+AAAAAAAAAAC9AN8FAAAAAAAAAAABAAAAugYAAAAAAAAASURUU0NvbXBvbmVudE1ldGFEYXRhMTAw
+AExpc3RgMQBHZXRJbnQzMgA8TW9kdWxlPgBJbnB1dElEAGdldF9Db21wb25lbnRNZXRhRGF0YQBt
+c2NvcmxpYgBTdWIAU3Vic3ViAHNldF9TcGVjaWZpYwBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJp
+YwBBZGQAZ2V0X2lkAGdldF9Db3B5b2ZwcmljZQBzZXRfQ29weW9mcHJpY2UAZGVmYXVsdEluc3Rh
+bmNlAFNDXzg5NzQ0NGNjYjY0MjRkYjk5NTEzNjUxOTE2OWQ3ZWVlAHNldF9NaWRkbGUAUnVudGlt
+ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAGdldF9uYW1lAEdldERhdGVU
+aW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0
+X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAGdldF9kZWFj
+dGl2YXRlZGF0ZQBzZXRfZGVhY3RpdmF0ZWRhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGls
+ZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dh
+YmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmli
+dXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBB
+c3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0
+ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0
+ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2lu
+dEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlB
+dHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQBNYXhWYWx1ZQB2YWx1ZQBnZXRfYWN0aXZl
+AHNldF9hY3RpdmUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAR2V0RGVjaW1h
+bABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfODk3NDQ0Y2NiNjQyNGRiOTk1MTM2NTE5MTY5ZDdl
+ZWUuZGxsAHNldF9TcGVjaWZpY19Jc051bGwAZ2V0X2lkX0lzTnVsbABnZXRfQ29weW9mcHJpY2Vf
+SXNOdWxsAHNldF9Db3B5b2ZwcmljZV9Jc051bGwAc2V0X01pZGRsZV9Jc051bGwAZ2V0X25hbWVf
+SXNOdWxsAGdldF9kZWFjdGl2YXRlZGF0ZV9Jc051bGwAc2V0X2RlYWN0aXZhdGVkYXRlX0lzTnVs
+bABnZXRfYWN0aXZlX0lzTnVsbABzZXRfYWN0aXZlX0lzTnVsbABzZXRfTWFpbl9Jc051bGwAU2V0
+TnVsbABnZXRfSXRlbQBzZXRfSXRlbQBTeXN0ZW0AcmVzb3VyY2VNYW4Ac2V0X01haW4AU2NyaXB0
+TWFpbgBCbG9iQ29sdW1uAG9wX0RpdmlzaW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5H
+bG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24A
+U3RyaW5nQ29tcGFyaXNvbgBDdWx0dXJlSW5mbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABNaWNy
+b3NvZnQuU3FsU2VydmVyLkRUU1BpcGVsaW5lV3JhcABJbnB1dDBCdWZmZXIAUGlwZWxpbmVCdWZm
+ZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIATWljcm9zb2Z0LlNxbFNlcnZlci5E
+dHMuUGlwZWxpbmUuV3JhcHBlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3Rl
+bS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ184OTc0NDRjY2I2
+NDI0ZGI5OTUxMzY1MTkxNjlkN2VlZS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVi
+dWdnaW5nTW9kZXMAU0NfODk3NDQ0Y2NiNjQyNGRiOTk1MTM2NTE5MTY5ZDdlZWUuUHJvcGVydGll
+cwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdz
+AGdldF9UaWNrcwBFcXVhbHMAUmVtb3ZlSW52YWxpZElucHV0Q29sdW1ucwBDb25uZWN0aW9ucwBP
+YmplY3QARW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25l
+bnQAU2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0
+LlNxbFNlcnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABJbnB1dDBfUHJvY2Vz
+c0lucHV0Um93AE5leHRSb3cAZ2V0X0Fzc2VtYmx5AG9wX0VxdWFsaXR5AAAAAAARTgBvAG4AIABG
+AG8AbwBkAAAJRgBvAG8AZAAAC1MAbgBhAGMAawAAF1MAbwBmAHQAIABEAHIAaQBuAGsAcwAAHUEA
+bABjAG8AaABvAGwAIABEAHIAaQBuAGsAcwAAC0UAdgBlAG4AdAAAGVMAdQBiAHMAYwByAGkAcAB0
+AGkAbwBuAAAbTQBpAHMAYwBlAGwAbABhAG4AZQBvAHUAcwAAC0MAYQBuAGQAeQAAC0MAaABpAHAA
+cwAAC0QAYQBpAHIAeQAADUQAcgBpAG4AawBzAAAbRQBuAGUAcgBnAHkAIABEAHIAaQBuAGsAcwAA
+CVcAaQBuAGUAAA1MAGkAcQB1AG8AcgAACUIAZQBlAHIAAAMwAAAHTgBlAGoAAAMxAAAFSgBhAACA
+m0kAcwBOAHUAbABsACAAcAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUA
+dAAgAHQAbwAgAEYAYQBsAHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABv
+ACAAdABoAGUAIABjAG8AbAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAAD0kAbgBwAHUAdAAgADAA
+AHFTAEMAXwA4ADkANwA0ADQANABjAGMAYgA2ADQAMgA0AGQAYgA5ADkANQAxADMANgA1ADEAOQAx
+ADYAOQBkADcAZQBlAGUALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMA
+AAAAmaab0xEjdUul8DMeGhpXBAAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERaQUVEjkBDgUgAQET
+AAQHARE9BCAAEnkIAAIRURFREVEFAAICDg4DBhE9AyAACgQgAQEKBSABEwAICSADARJFHQgSSQMG
+EkUDBh0IBCABCAgEIAECCAQgARwIBSABET0IBSACAQgcBCABDggFIAERUQgDIAACByACAg4RgIUF
+IAEdCAgIAAESgIkRgI0FIAASgJEHIAIBDhKAkQi3elxWGTTgiQiJhF3NgIDMkQYGFRI5AQ4DBhIU
+AwYSGAMGElUDBhJhAwYSZQMGEiAFIAEBEgwDIAAIBCAAEk0EIAARPQUgAQERPQQgAQECAyAADgQg
+ABFRBSABARFRCSAEAQgOEkUSSQUgAQESVQQAABJhBAAAEmUFAAEBEmUEAAASIAMAAAEDKAAIAygA
+AgQoABJNBCgAET0DKAAOBCgAEVEECAASYQQIABJlBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBO
+b25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzg5NzQ0NGNjYjY0MjRkYjk5NTEzNjUx
+OTE2OWQ3ZWVlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTkAAEkBABouTkVURnJhbWV3b3Jr
+LFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41
+BAEAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1z
+Y29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49
+Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAA
+AAAAAAAAAFBBRFBBRFC0AAAAoD8AAAAAAAAAAAAAuj8AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AKw/AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQ
+AAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhA
+AADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv
+/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYA
+YQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAA
+ALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAwADQA
+YgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBh
+AG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMA
+XwA4ADkANwA0ADQANABjAGMAYgA2ADQAMgA0AGQAYgA5ADkANQAxADMANgA1ADEAOQAxADYAOQBk
+ADcAZQBlAGUAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAA
+AABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADgAOQA3ADQANAA0AGMAYwBi
+ADYANAAyADQAZABiADkAOQA1ADEAMwA2ADUAMQA5ADEANgA5AGQANwBlAGUAZQAuAGQAbABsAAAA
+SAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABA
+ACAAIAAyADAAMQA5AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAA
+AAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AOAA5ADcANAA0
+ADQAYwBjAGIANgA0ADIANABkAGIAOQA5ADUAMQAzADYANQAxADkAMQA2ADkAZAA3AGUAZQBlAC4A
+ZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADgAOQA3ADQANAA0
+AGMAYwBiADYANAAyADQAZABiADkAOQA1ADEAMwA2ADUAMQA5ADEANgA5AGQANwBlAGUAZQAAADQA
+CAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBB
+AHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA
-EAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgAAABY
-QAAA7AMAAAAAAAAAAAAA7AM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E
-7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAAAQBW
-AGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAAAAAA
-AACwBEwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAACgDAAABADAAMAAwADAAMAA0
-AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5AE4A
-YQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBD
-AF8AOAA5ADcANAA0ADQAYwBjAGIANgA0ADIANABkAGIAOQA5ADUAMQAzADYANQAxADkAMQA2ADkA
-ZAA3AGUAZQBlAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAALgAw
-AAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwA4ADkANwA0ADQANABjAGMA
-YgA2ADQAMgA0AGQAYgA5ADkANQAxADMANgA1ADEAOQAxADYAOQBkADcAZQBlAGUALgBkAGwAbAAA
-AEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAA
-QAAgACAAMgAwADEAOQAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAAAAAA
-AAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfADgAOQA3ADQA
-NAA0AGMAYwBiADYANAAyADQAZABiADkAOQA1ADEAMwA2ADUAMQA5ADEANgA5AGQANwBlAGUAZQAu
-AGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwA4ADkANwA0ADQA
-NABjAGMAYgA2ADQAMgA0AGQAYgA5ADkANQAxADMANgA1ADEAOQAxADYAOQBkADcAZQBlAGUAAAA0
-AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAIAAEA
-QQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAEg8AAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAzD8AAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1743,7 +1764,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   </arrayElements>
                 </property>
                 <property
@@ -1779,7 +1800,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">63</property>
+                  typeConverter="NOTBROWSABLE">13</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -1794,27 +1815,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                       refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[id]"
                       cachedDataType="i4"
                       cachedName="id"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]" />
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[name]"
                       cachedDataType="nText"
                       cachedName="name"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[price]"
-                      cachedDataType="i4"
-                      cachedName="price"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]" />
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[name]" />
                     <inputColumn
                       refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[deactivate_date]"
                       cachedDataType="date"
                       cachedName="deactivate_date"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]" />
+                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[deactivate_date]"
+                      usageType="readWrite" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[active]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of active"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of active]"
+                      name="active"
+                      usageType="readWrite" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Script Component.Inputs[Input 0].Columns[Copy of price]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of price"
+                      cachedScale="2"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of price]"
+                      usageType="readWrite" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1848,207 +1875,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Data Flow Task\Union All"
-              componentClassID="Microsoft.UnionAll"
-              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
-              name="Union All"
-              version="1">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
-                  name="Union All Input 1">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[id]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[active]"
-                      cachedDataType="i2"
-                      cachedName="active"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[active]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[name]"
-                      cachedDataType="nText"
-                      cachedName="name"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[name]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[price]"
-                      cachedDataType="i4"
-                      cachedName="price"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[price]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[deactivate_date]"
-                      cachedDataType="date"
-                      cachedName="deactivate_date"
-                      lineageId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output].Columns[deactivate_date]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
-                  hasSideEffects="true"
-                  name="Union All Input 2">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[main]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="main"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[main]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GeneralCategory]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[sub]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="sub"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[MiddleCategory]}</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[sub-sub]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="sub-sub"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[sub-sub]">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Output column lineage ID"
-                          name="OutputColumnLineageID">#{Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SpecificCategory]}</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-                <input
-                  refId="Package\Data Flow Task\Union All.Inputs[Union All Input 3]"
-                  dangling="true"
-                  hasSideEffects="true"
-                  name="Union All Input 3">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]"
-                  name="Union All Output 1">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[id]"
-                      name="id" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]"
-                      dataType="i2"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[active]"
-                      name="active" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]"
-                      dataType="nText"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[name]"
-                      name="name" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[price]"
-                      name="price" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]"
-                      dataType="date"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[deactivate_date]"
-                      name="deactivate_date" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GeneralCategory]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[GeneralCategory]"
-                      name="GeneralCategory" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[MiddleCategory]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[MiddleCategory]"
-                      name="MiddleCategory" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SpecificCategory]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[SpecificCategory]"
-                      name="SpecificCategory" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Excel Source Output]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 2]"
-              name="Excel Source Output"
-              startId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Script Component.Inputs[Input 0]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
             <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Union All.Inputs[Union All Input 1]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\ExtractMemberData.Outputs[OLE DB Source Output]" />
             <path
@@ -2056,11 +1892,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               endId="Package\Data Flow Task\Save data to database.Inputs[OLE DB Destination Input]"
               name="Output 0"
               startId="Package\Data Flow Task\Script Component.Outputs[Output 0]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Union All Output 1]"
-              endId="Package\Data Flow Task\Script Component.Inputs[Input 0]"
-              name="Union All Output 1"
-              startId="Package\Data Flow Task\Union All.Outputs[Union All Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2079,7 +1910,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151,42"
+          Size="151.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="212,67" />
       </GraphLayout>
@@ -2089,121 +1920,59 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="172,44"
           Id="Package\Data Flow Task\ExtractMemberData"
-          TopLeft="61,100" />
+          TopLeft="313.571432872695,179.529412880076" />
         <NodeLayout
-          Size="120,42"
-          Id="Package\Data Flow Task\Union All"
-          TopLeft="232.380956338377,193.725492913005" />
-        <NodeLayout
-          Size="183,42"
-          Id="Package\Data Flow Task\Save data to database"
-          TopLeft="201.761905524195,433.921570758094" />
-        <NodeLayout
-          Size="162,42"
+          Size="161.6,41.6"
           Id="Package\Data Flow Task\Script Component"
-          TopLeft="310.476195763569,301.333335521175" />
+          TopLeft="317.333338737488,349.05098324922" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Data Flow Task\Excel Source"
-          TopLeft="349,102" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="418.2,143.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-107.152376994957,50.1254929130053"
-              Start="0,0"
-              End="-107.152376994957,42.6254929130053">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.6795681721742" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.6795681721742"
-                    Point2="0,29.6795681721742"
-                    Point3="-4,29.6795681721742" />
-                  <mssgle:LineSegment
-                    End="-103.152376994957,29.6795681721742" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-103.152376994957,29.6795681721742"
-                    Point2="-107.152376994957,29.6795681721742"
-                    Point3="-107.152376994957,33.6795681721742" />
-                  <mssgle:LineSegment
-                    End="-107.152376994957,42.6254929130053" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Union All Output 1]"
-          TopLeft="292.380956338377,235.325492913005">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="99.295239425192,66.0078426081693"
-              Start="0,0"
-              End="99.295239425192,58.5078426081693">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0039213040846" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.0039213040846"
-                    Point2="0,33.0039213040846"
-                    Point3="4,33.0039213040846" />
-                  <mssgle:LineSegment
-                    End="95.295239425192,33.0039213040846" />
-                  <mssgle:CubicBezierSegment
-                    Point1="95.295239425192,33.0039213040846"
-                    Point2="99.295239425192,33.0039213040846"
-                    Point3="99.295239425192,37.0039213040846" />
-                  <mssgle:LineSegment
-                    End="99.295239425192,58.5078426081693" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="183.2,41.6"
+          Id="Package\Data Flow Task\Save data to database"
+          TopLeft="307.476193038784,459.615688765503" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Output 0]"
-          TopLeft="391.676195763569,342.933335521175">
+          TopLeft="398.604765888136,390.65098324922">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-98.314290239373,90.9882352369191"
+              EndConnector="0,68.9647055162826"
               Start="0,0"
-              End="-98.314290239373,83.4882352369191">
+              End="0,61.4647055162826">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.4941176184595" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.4941176184595"
-                    Point2="0,45.4941176184595"
-                    Point3="-4,45.4941176184595" />
+                    End="0,61.4647055162826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155.2,44"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="323.428576936527,271.435296331227" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="400.300004904611,223.529412880076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.9058834511515"
+              Start="0,0"
+              End="0,40.4058834511515">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-94.314290239373,45.4941176184595" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-94.314290239373,45.4941176184595"
-                    Point2="-98.314290239373,45.4941176184595"
-                    Point3="-98.314290239373,49.4941176184595" />
-                  <mssgle:LineSegment
-                    End="-98.314290239373,83.4882352369191" />
+                    End="0,40.4058834511515" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2213,31 +1982,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="147,144">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="399.580957837008,315.435296331227">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="145.380956338377,49.7254929130053"
+              EndConnector="0,33.6156869179931"
               Start="0,0"
-              End="145.380956338377,42.2254929130053">
+              End="0,26.1156869179931">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.8627464565026" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.8627464565026"
-                    Point2="0,24.8627464565026"
-                    Point3="4,24.8627464565026" />
-                  <mssgle:LineSegment
-                    End="141.380956338377,24.8627464565026" />
-                  <mssgle:CubicBezierSegment
-                    Point1="141.380956338377,24.8627464565026"
-                    Point2="145.380956338377,24.8627464565026"
-                    Point3="145.380956338377,28.8627464565026" />
-                  <mssgle:LineSegment
-                    End="145.380956338377,42.2254929130053" />
+                    End="0,26.1156869179931" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2251,19 +2008,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\ExtractMemberData">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
