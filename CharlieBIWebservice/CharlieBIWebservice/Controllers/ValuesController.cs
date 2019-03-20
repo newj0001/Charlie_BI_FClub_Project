@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using Microsoft.AnalysisServices.AdomdClient;
+//Microsoft.AnalysisServices.AdomdClient.dll
 namespace CharlieBIWebservice.Controllers
 {
     public class ValuesController : ApiController
