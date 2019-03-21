@@ -18,23 +18,21 @@ namespace CharlieBIWebservice.Controllers
         // GET: BIFclub
         public List<Year> Get()
         {
-            List<Year> boi3 = new List<Year>();
-            List<Month> boi2 = new List<Month>();
-            List<Day> boi1 = new List<Day>();
+            List<Year> Year = new List<Year>();
+            List<Month> Month = new List<Month>();
+            List<Day> Day = new List<Day>();
             GetDate getdate = new GetDate();
-            List<Date> date = new List<Date>();
-            boi1 = getdate.Getdays();
-            //boi1 = getdate.Getdays();
-            boi2 = getdate.GetMonth();
-            boi3 = getdate.GetYear();
+            Day = getdate.Getdays();
+            Month = getdate.GetMonth();
+            Year = getdate.GetYear();
             int counter = 0;
-            for (int i = 0; i < boi2.Count; i++)
+            for (int i = 0; i < Month.Count; i++)
             {
-                boi2[i].days = new List<Day>();
-                while (boi2[i].month == boi1[counter].month)
+                Month[i].days = new List<Day>();
+                while (Month[i].month == Day[counter].month)
                 {
-                    boi2[i].days.Add(boi1[counter]);
-                    if (counter < boi1.Count - 1)
+                    Month[i].days.Add(Day[counter]);
+                    if (counter < Day.Count - 1)
                     {
                         counter++;
                     }
@@ -45,13 +43,13 @@ namespace CharlieBIWebservice.Controllers
                 }
             }
             counter = 0;
-            for (int i = 0; i < boi3.Count; i++)
+            for (int i = 0; i < Year.Count; i++)
             {
-                boi3[i].Months = new List<Month>();
-                while (boi3[i].year == boi2[counter].year)
+                Year[i].Months = new List<Month>();
+                while (Year[i].year == Month[counter].year)
                 {
-                    boi3[i].Months.Add(boi2[counter]);
-                    if (counter < boi2.Count - 1)
+                    Year[i].Months.Add(Month[counter]);
+                    if (counter < Month.Count - 1)
                     {
                         counter++;
                     }
@@ -63,13 +61,7 @@ namespace CharlieBIWebservice.Controllers
             }
 
 
-            return boi3;
+            return Year;
         }
-        public string Get(string id)
-        {
-            //SELECT {[Measures].[Fact Sale Count]} ON COLUMNS, NONEMPTY({[Dim Date].[Month].[Month]}) ON ROWS FROM[Charlie BI F Club]
-            return null;
-        }
-
     }
 }

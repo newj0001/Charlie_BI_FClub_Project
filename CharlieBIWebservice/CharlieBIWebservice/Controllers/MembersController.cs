@@ -8,13 +8,13 @@ using System.Web.Http;
 
 namespace CharlieBIWebservice.Controllers
 {
-    public class CategoryController : ApiController
+    public class MembersController : ApiController
     {
-        public List<YearCategory> Get()
+        // GET api/Members
+        public List<Members> Get()
         {
             GetDate getdate = new GetDate();
-            return getdate.GetCategory();
+            return getdate.Getmembers();
         }
-
     }
 }
