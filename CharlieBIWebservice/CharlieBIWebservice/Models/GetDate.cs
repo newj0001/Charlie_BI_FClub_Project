@@ -8,10 +8,9 @@ namespace CharlieBIWebservice.Models
 {
     public class GetDate
     {
-        public List<Date> Getdays()
+        public List<Day> Getdays()
         {
             List<Day> boi = new List<Day>();
-            List<Date> date = new List<Date>();
 
             AdomdConnection conn = new AdomdConnection(
             "Data Source=LAPTOP-ED7T3RSE\\ETELLERANDET;Initial Catalog=Charlie_BI_AnalysisProject;");
@@ -23,17 +22,16 @@ namespace CharlieBIWebservice.Models
 
             foreach (var item in dr)
             {
-                Date boi2 = new Date();
-                boi2.Year = Convert.ToString(item[0]);
-                boi2.Month = Convert.ToString(item[1]);
-                boi2.Day = Convert.ToString(item[2]);
-                boi2.Amount = Convert.ToString(item[3]);
-                date.Add(boi2);
+                Day boi2 = new Day();
+                boi2.month = Convert.ToString(item[1]);
+                boi2.day = Convert.ToString(item[2]);
+                boi2.amount = Convert.ToString(item[3]);
+                boi.Add(boi2);
             }
 
             dr.Close();
             conn.Close();
-            return date;
+            return boi;
         }
 
         public List<Month> GetMonth()
@@ -45,13 +43,14 @@ namespace CharlieBIWebservice.Models
             "Data Source=LAPTOP-ED7T3RSE\\ETELLERANDET;Initial Catalog=Charlie_BI_AnalysisProject;");
             conn.Open();
 
-            string commandText = @"SELECT {[Measures].[Fact Sale Count] } ON COLUMNS, {[Dim Date].[Hierarchy].[Month]} ON ROWS FROM[Charlie BI F Club]";
+            string commandText = @"SELECT {[Measures].[Fact Sale Count] } ON COLUMNS, NONEMPTY({[Dim Date].[Hierarchy].[Month]}) ON ROWS FROM[Charlie BI F Club]";
             AdomdCommand cmd = new AdomdCommand(commandText, conn);
             AdomdDataReader dr = cmd.ExecuteReader();
 
             foreach (var item in dr)
             {
                 Month boi2 = new Month();
+                boi2.year = Convert.ToString(item[0]);
                 boi2.month = Convert.ToString(item[1]);
                 boi2.amount = Convert.ToString(item[2]);
                 boi.Add(boi2);
