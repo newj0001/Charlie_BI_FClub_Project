@@ -7,6 +7,7 @@ namespace CharlieBIWebservice.Models
 {
     public class Day
     {
+        public string month { get; set; }
         public string day { get; set; }
         public string amount { get; set; }
     }
