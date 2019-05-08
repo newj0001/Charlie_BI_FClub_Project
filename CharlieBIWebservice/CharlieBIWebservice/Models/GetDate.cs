@@ -13,7 +13,7 @@ namespace CharlieBIWebservice.Models
             List<Day> boi = new List<Day>();
 
             AdomdConnection conn = new AdomdConnection(
-            "Data Source=LAPTOP-ED7T3RSE\\ETELLERANDET;Initial Catalog=Charlie_BI_AnalysisProject;");
+            "Data Source=.;Initial Catalog=Charlie_BI_AnalysisProject;");
             conn.Open();
 
             string commandText = @"SELECT {[Measures].[Fact Sale Count] } ON COLUMNS, NonEmpty({[Dim Date].[Hierarchy].[Day Of Month]}) ON ROWS FROM[Charlie BI F Club]";
@@ -40,7 +40,7 @@ namespace CharlieBIWebservice.Models
 
 
             AdomdConnection conn = new AdomdConnection(
-            "Data Source=LAPTOP-ED7T3RSE\\ETELLERANDET;Initial Catalog=Charlie_BI_AnalysisProject;");
+            "Data Source=.;Initial Catalog=Charlie_BI_AnalysisProject;");
             conn.Open();
 
             string commandText = @"SELECT {[Measures].[Fact Sale Count] } ON COLUMNS, NONEMPTY({[Dim Date].[Hierarchy].[Month]}) ON ROWS FROM[Charlie BI F Club]";
@@ -67,7 +67,7 @@ namespace CharlieBIWebservice.Models
 
 
             AdomdConnection conn = new AdomdConnection(
-            "Data Source=LAPTOP-ED7T3RSE\\ETELLERANDET;Initial Catalog=Charlie_BI_AnalysisProject;");
+            "Data Source=.;Initial Catalog=Charlie_BI_AnalysisProject;");
             conn.Open();
 
             string commandText = @"SELECT {[Measures].[Fact Sale Count] } ON COLUMNS, NONEMPTY({[Dim Date].[Hierarchy].[Year]} ) ON ROWS FROM[Charlie BI F Club]";
