@@ -191,15 +191,22 @@
     <Compile Include="Controllers\BIFclubController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\SelectController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Date.cs" />
     <Compile Include="Models\Day.cs" />
+    <Compile Include="Models\DayCategory.cs" />
     <Compile Include="Models\GetDate.cs" />
+    <Compile Include="Models\Members.cs" />
     <Compile Include="Models\Month.cs" />
+    <Compile Include="Models\MonthCategory.cs" />
     <Compile Include="Models\Year.cs" />
+    <Compile Include="Models\YearCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
